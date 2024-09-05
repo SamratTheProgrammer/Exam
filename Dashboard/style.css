@@ -367,7 +367,7 @@ span{
 }
 .container{
     position: relative;
-    left: 35%;
+    left: 20%;
     height: 45rem;
     width: 40rem;
     border-radius: 1.6rem;
@@ -488,7 +488,7 @@ span{
 
 .container2{
     position: relative;
-    left: 35%;
+    left: 20%;
     height: 60rem;
     width: 40rem;
     border-radius: 1.6rem;
@@ -626,7 +626,7 @@ span{
 }
 .container3{
     position: relative;
-    left: 35%;
+    left: 20%;
     height: 40rem;
     width: 40rem;
     border-radius: 1.6rem;

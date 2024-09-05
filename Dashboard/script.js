@@ -79,13 +79,13 @@ closeBtn3.onclick = function() {
     modal3.classList.remove('show2');
 }
 
-const typed= new Typed('.multiple-text',{
-    strings:['Prepare with confidance.','For Smart Examination.'],
-    typeSpeed:100,
-    backSpeed:100,
-    backDelay:200,
-    loop:true
-})
+// const typed= new Typed('.multiple-text',{
+//     strings:['Prepare with confidance.','For Smart Examination.'],
+//     typeSpeed:100,
+//     backSpeed:100,
+//     backDelay:200,
+//     loop:true
+// })
 
 // ScrollReveal({ 
 //     //reset: true ,
