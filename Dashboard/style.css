@@ -914,7 +914,7 @@ span{
         margin: 3rem 0;
     }
     .navbar{
-        background-color: var(--white-color);
+        background-color: var(--bg-color);
     }
     a.btn2{
         font-size: 11.04px;
