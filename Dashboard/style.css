@@ -999,7 +999,7 @@ span{
     .search-button {
         width: 22%;
         height: 8rem;
-        top: -0.5px;
+        top: -0px;
         left: 50%;
         font-size: 2.7rem;
     }
@@ -1120,7 +1120,8 @@ span{
         left: 33%;
     }
     .about-img img{
-        width: 90vw
+        width: 90vw;
+        height: 50vh;
     }
     .footer{
         flex-direction: column-reverse;
