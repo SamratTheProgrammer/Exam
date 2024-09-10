@@ -1119,13 +1119,8 @@ span{
     .about-content span.btn{
         left: 33%;
     }
-}
-@media(max-width:376px){
-    html{
-        font-size: 30%;
-    }
-    .search{
-        width: 80vw;
+    .about-img img{
+        width: 90vw
     }
     .footer{
         flex-direction: column-reverse;
@@ -1138,6 +1133,29 @@ span{
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .social-media{
+        margin-top: 2rem;
+        padding-right: 38rem;
+    }
+    .social-media a{
+        height: 6rem;
+        width: 6rem;
+    }
+    .footer-iconTop a{
+        height: 6rem;
+        width: 6rem;
+    }
+    .footer-iconTop a i{
+        font-size: 4rem;
+    }
+}
+@media(max-width:376px){
+    html{
+        font-size: 30%;
+    }
+    .search{
+        width: 80vw;
     }
     .social-media{
         margin-top: 2rem;
