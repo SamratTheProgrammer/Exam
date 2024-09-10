@@ -200,11 +200,10 @@ span{
     margin-bottom: 5rem;
 }
 .courses .courses-container{
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 .courses-container .courses-box{
     flex: 1 1 30rem;
@@ -778,6 +777,47 @@ span{
     font-size: 2rem;
     color: #333;
 }
+@media(max-width:1550px){
+    html{
+        font-size: 55%;
+    }
+    .image{
+        height: 50vh;
+        width: 15%;
+    }
+    .search-input{
+        width: 80%;
+    }
+    .search-button {
+        width: 27%;
+    }
+}
+@media(max-width:1300px){
+    html{
+        font-size: 50%;
+    }
+    .image{
+        height: 40vh;
+    }
+    .search{
+        width: 60vw;
+        height: 10vh;
+        
+    }
+    .search-input {
+        width: 45%;
+        height: 5.3rem;
+        font-weight: 600;
+        padding-left: 4rem;
+        font-size: 1.7rem;
+    }
+    .search-button {
+        width: 15%;
+        height: 5.3rem;
+        left: 40%;
+        font-size: 1.7rem;
+    }
+}
 @media(max-width:1050px){
     html{
         font-size: 40%;
@@ -818,6 +858,7 @@ span{
     .search-input {
         width: 50%;
         height: 6rem;
+        font-weight: 600;
     }
     .search-button {
         width: 17%;
@@ -838,8 +879,21 @@ span{
     .footer-text p{
         font-size: 2.3rem;
     }
+    .footer{
+        padding: 2rem 3%;
+    }
     .social-media{
-        font-size: 2.3rem;
+        padding-right: 30rem;
+        
+    }
+    .social-media a{
+        height: 5rem;
+        width: 5rem;
+        font-size: 2.7rem;
+    }
+    .footer-iconTop{
+        height: 5rem;
+        width: 5rem;
     }
     .test{
         padding-bottom: 7rem;
@@ -850,13 +904,87 @@ span{
     .test .test-container{
         grid-template-columns: repeat(2,1fr);
     }
+    .about{
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .about-content h2{
+        text-align: center;
+    }
+    .about-img img{
+        width: 60vw;
+        margin-top: -2rem;
+        height: 60vh;
+    }
+    .about-content h2{
+        font-size: 8rem;
+    }
+    .about-content h3{
+        font-size: 5rem;
+    }
+    .about-content p{
+        font-size: 3rem;
+    }
+    .about-content .btn{
+        height: 8rem;
+        width: 25rem;
+        font-size: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .about-content span.btn{
+        position: relative;
+        left: 38%;
+    }
+    .courses .courses-container{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .courses-box h3{
+        font-size: 3rem;
+    }
+    .courses-box p{
+        font-size: 2rem;
+    }
+}
+@media(max-width:980px){
+    .search{
+        width: 70vw;
+        height: 20vh;
+    }
+    .search-input{
+        width: 45%;
+        height: 6.1rem;
+        font-size: 1.8rem;
+    }
+    .search-button {
+        width: 14%;
+        left: 34%;
+        font-size: 1.8rem;
+        height: 6.1rem;
+    }
+    .test-layer h4{
+        font-size: 4rem;
+    }
+    .test-layer p{
+        font-size: 2rem;
+    }
+    .test-layer a {
+        height: 6rem;
+        width: 6rem;
+    }
+    .test-layer a i{
+        font-size: 2.5rem;
+    }
+    
+
 }
 @media(max-width:798px){
     html{
         font-size: 30%;
     }
     .image{
-        display: none;
+        padding-left: 5rem;
     }
     .search{
         width: 60vw;
@@ -866,12 +994,14 @@ span{
     .search-input {
         width: 70%;
         height: 8rem;
+        font-size: 2.7rem;
     }
     .search-button {
         width: 22%;
-        height: 8rem;
+        height: 7.8rem;
         top: -0.5px;
         left: 50%;
+        font-size: 2.7rem;
     }
     .home-content h3{
         font-size: 3.5rem;
@@ -930,25 +1060,64 @@ span{
     .test .test-container{
         grid-template-columns: 1fr;
     }
+    .test-layer h4{
+        font-size: 6rem;
+    }
+    .test-layer p{
+        font-size: 3rem;
+    }
+    .test-layer a {
+        height: 8rem;
+        width: 8rem;
+    }
+    .test-layer a i{
+        font-size: 3.5rem;
+    }
+    .courses .courses-container{
+        grid-template-columns: 1fr;
+    }
 }
 @media(max-width:450px){
     .search{
         width: 80vw;
         height: 10vh;
     }
+    .image{
+        display: none;
+    }
+    
     .search-input {
         width: 70%;
         height: 8rem;
+        font-size: 2.5rem;
     }
     .search-button {
         width: 25%;
         height: 8rem;
+        font-size: 2.5rem;
     }
     .home-content h1{
         font-size: 6rem;
     }
     .contact form .input-box input{
         width: 100%;
+    }
+    
+    .test-layer h4{
+        font-size: 5rem;
+    }
+    .test-layer p{
+        font-size: 2.7rem;
+    }
+    .test-layer a {
+        height: 8rem;
+        width: 8rem;
+    }
+    .test-layer a i{
+        font-size: 3.5rem;
+    }
+    .about-content span.btn{
+        left: 33%;
     }
 }
 @media(max-width:376px){
@@ -965,13 +1134,27 @@ span{
         text-align: center;
         margin-top: 2rem;
     }
+    .footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .social-media{
+        margin-top: 2rem;
+        padding-right: 35rem;
+    }
     .home-content h1{
         font-size: 5rem;
     }
     .home-content h3{
         font-size:3rem;
     }
-    
+    .about-img img{
+        width: 90vw
+    }
+    .about-content span.btn{
+        left: 30%;
+    }
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
