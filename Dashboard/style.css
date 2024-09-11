@@ -293,6 +293,9 @@ span{
 .contact form .input-box input{
     width: 49%;
 }
+.contact form .input-box{
+    gap: 1rem;
+}
 .contact form textarea{
     resize:none;
 }
@@ -303,6 +306,9 @@ span{
 }
 .contact form .btn:hover{
     color: var(--main-color);
+}
+.contact a{
+    margin-top: 2rem;
 }
 .social-media a{
     margin: 2.5rem .75rem 3rem;
@@ -364,7 +370,8 @@ span{
     font-size: 2.4rem;
     color: #333;
 }
-.container{
+
+/* .container{
     position: relative;
     left: 20%;
     height: 45rem;
@@ -710,7 +717,7 @@ span{
     font-size: 2rem;
     color: var(--text-color);
     left: 85%;
-}
+} */
 .test{
     padding-bottom: 10rem;
 }
@@ -870,8 +877,10 @@ span{
         font-size: 3.5rem;
     }
     .contact{
-        min-height: 70vh;
+        min-height: 80vh;
+        width: 100%;
     }
+    
     .courses {
         min-height: 70vh;
         padding-bottom: 3rem;
@@ -970,6 +979,7 @@ span{
     .search-button {
         width: 14%;
         left: 34%;
+        top: 1.5%;
         font-size: 1.8rem;
         height: 6.1rem;
     }
@@ -986,8 +996,9 @@ span{
     .test-layer a i{
         font-size: 2.5rem;
     }
-    
-
+    .contact form{
+        max-width: 80rem;
+    }
 }
 @media(max-width:798px){
     html{
@@ -1158,6 +1169,11 @@ span{
     }
     .footer-iconTop a i{
         font-size: 4rem;
+    }
+    .contact a{
+        font-size: 1.88rem;
+        width: 20rem;
+        
     }
 }
 @media(max-width:376px){
