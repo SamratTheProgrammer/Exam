@@ -863,7 +863,7 @@ span{
     .search-button {
         width: 17%;
         height: 6rem;
-        top: 2px;
+        bottom: 78%;
         left: 40%;
     }
     #darkMode-icon{
@@ -946,7 +946,17 @@ span{
     .courses-box p{
         font-size: 2rem;
     }
+    .search-input{
+        font-size: 2rem;
+        height: 6rem;
+    }
+    .search-button{
+        font-size: 2rem;
+        bottom: 52.5%;
+        height: 6rem;
+    }
 }
+
 @media(max-width:980px){
     .search{
         width: 70vw;
@@ -988,8 +998,7 @@ span{
     }
     .search{
         width: 60vw;
-        height: 10vh;
-        
+        height: 10vh; 
     }
     .search-input {
         width: 70%;
@@ -1169,7 +1178,8 @@ span{
         font-size:3rem;
     }
     .about-img img{
-        width: 90vw
+        width: 90vw;
+        height: 50vh;
     }
     .about-content span.btn{
         left: 30%;
