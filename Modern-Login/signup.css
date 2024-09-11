@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap');
+*{
+    box-sizing:border-box;
+    text-decoration: none;
+    border:none;
+    outline:none;
+    scroll-behavior:smooth;
+    font-family: 'roboto', sans-serif;
+}
+.registration-form {
+    max-width: 600px;
+    height: 700px;
+    margin: 0 auto;
+    padding: 30px 30px 30px;
+    border: 2px solid #95d191;
+}
+h1{
+    position: relative;
+    top: -25px;
+}
+h2 {
+    position: relative;
+    top: -25px;
+    font-family:"Roboto",Serif;
+    font-weight: 500;
+}
+.box{
+    position: relative;
+    top: -25px;
+    font-family: sans-serif;
+}
+label {
+    padding-top: 20px;
+    display: block;
+    margin-bottom: 20px;
+}
+.qs{
+    border: 1px solid #519a65;
+    border-radius: 7px;
+    padding: 10px;
+    background: #def1e5;
+    font-size: 1.5rem;
+}
+
+input[type="text"],
+input[type="email"], 
+
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+.btn{
+    height: 2.5rem;
+    width: 8.5rem;
+    position: relative;
+    bottom: -90px;
+    font: 1.3em sans-serif;
+    background-color: #b2dbbd;
+    border-radius: 5px;
+
+}
+.btn:hover {
+    background-color: #75c48b;
+}
+.check{
+    position: relative;
+    padding-left: 50px;
+}
