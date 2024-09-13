@@ -34,7 +34,7 @@
             </form>
         </div>
             <div class="image">
-                <img src="exam-removebg.png" alt="">
+                <img src="exam-removebg.pn" alt="">
             </div>
             <!-- <div class="container">
                 <span class="close"><ion-icon name="close"></ion-icon></span>
@@ -103,7 +103,43 @@
                             </div>
                         </div>
                         </div> -->
-                    
+                    <div class="container">
+                        <span class="close"><ion-icon name="close"></ion-icon></span>
+                        <div class="head">
+                            <h2><b>Create a new account</b></h2>
+                            <h4><b>It's quick and easy.</b></h4>
+                        </div>
+                        <form action="#" method="post">
+                        <div class="input">
+                            <div class="nm">
+                            <input type="text" class="name" name="fn" id="fn" placeholder="First name" required>
+                            <input type="text" class="name" name="ln" id="ln" placeholder="Last name" required>
+                        </div><br>
+                        <div class="auth">
+                            <input type="email" name="email" id="email" placeholder="Mobile number or email address" required><br>
+                            <input type="password" name="pass" id="pass" placeholder="New password" required>
+                            <p>Date of birth</p>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                        </div>
+                        </div>
+                        <div class="gender">
+                            <div class="sex">  
+                                <label class="Gen" for="Female">Female</label>
+                                <input type="radio" class="ratio" name="seX" value="female" id="seX" required>
+                            </div>
+                            <div class="sex">
+                                <label class="Gen" for="male">Male</label>
+                                <input type="radio" class="ratio" name="seX" value="male" id="seX" required>
+                            </div>
+                            <div class="sex">
+                                <label class="Gen" for="custom">Custom</label>
+                                <input type="radio" class="ratio" name="seX" value="custom" id="seX" required>
+                            </div>    
+                        </div>
+                            <button type="submit" class="signup" id="signup"><b> Sign up</b></button>
+                            <p class="txt">Already have an account?<a href="#">Sign In</a></p>
+                        </form>
+                    </div>
         </section>
         <section class="test" id="test">
             <h2 class="heading">Test Topics</h2>

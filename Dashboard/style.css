@@ -15,11 +15,14 @@
     --main-color: rgb(27, 34, 141);
     --white-color: #fdfdfd;
     --shadow-color: rgba(0, 0, 0, .2);
+    --form-color: rgb(27, 34, 141);;
+
 }
 .dark-mode{
     --bg-color: #0b061f;
     --text-color: #fafafa;
     --shadow-color: rgba(0, 0, 0, .7);
+    --form-color: #fdfdfd;
 }
 html{
     font-size: 62.5%;
@@ -266,7 +269,6 @@ span{
 .contact h2{
     margin-bottom: 3rem;
 }
-
 .contact form{
     max-width: 70rem;
     margin: 1rem auto;
@@ -718,6 +720,151 @@ span{
     color: var(--text-color);
     left: 85%;
 } */
+.container{
+    position: relative;
+    left: 20%;
+    height: 50rem;
+    width: 40rem;
+    background-color: var(--form-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3dvh;
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px 30px rgba(5, 5, 5, 0.301);
+    gap: 3rem;
+    transition: .5s;
+    display: none;
+}
+.container:hover{
+    box-shadow: 0 .1rem 2rem var(--shadow-color);
+    transform: scale(1.02);
+}
+.head{
+    color: var(--bg-color);
+    font-size:2.0rem;
+    font-weight: 600;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1.7rem;
+}
+.head h4{
+    padding-top: 1rem;
+}
+.input{
+    width: 100%;
+    font-family: inherit;
+}
+.nm{
+    display: flex;
+    justify-content: space-between;
+}
+.name{
+    background-color: transparent;
+    height: 3.5rem;
+    width: 17.5rem;
+    font-size: 15px;
+    border-radius: 4px;
+    padding-left: 15px;
+    border: 1px solid var(--bg-color);
+    outline: none;
+}
+#email,#pass,#dateOfBirth{
+    background-color: transparent;
+    height: 3.5rem;
+    width: 36rem;
+    border-radius: 4px;
+    padding-left: 15px;
+    border: 1px solid var(--bg-color);
+    font-size: 15px;
+    line-height: 16px;
+    outline: none;
+}
+.auth{
+    padding-bottom: 1.8rem;
+    display: flex;
+    flex-direction: column;
+}
+.gender{
+    display: flex;
+    justify-content:space-between ;
+    padding-bottom: 1.8rem;
+}
+.sex{
+    height: 3.5rem;
+    width: 11.5rem;
+    font-size: 15px;
+    border-radius: 4px;
+    padding-left: 15px;
+    border: 1px solid var(--bg-color);
+    display: flex;
+    align-items:center;
+    padding-right: 2rem;
+    color: var(--bg-color);
+}
+.ratio{
+    position: relative;
+    left: 2.5rem;
+}
+.signup{
+    background: none;
+    background-color: #00a400;
+    border: none;
+    border-radius: 6px;
+    box-shadow: none;
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 600;
+    height: 3.6rem;
+    overflow: hidden;
+    padding: 0 32px;
+    text-shadow: none;
+    transition: .5s;
+}
+.container button{
+    position: relative;
+    left: 32.5%;
+}
+.auth p{
+    font-size: 1.4rem;
+    padding-top: .8rem;
+    padding-bottom: .4rem;
+    padding-left: .2rem;
+    color: var(--bg-color);
+}
+.txt{
+    font-size: 1.5rem;
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    color: var(--bg-color);
+}
+.txt a{
+    padding-left: 2%;
+    color: var(--bg-color);
+}
+button#signup:hover{
+    background-color: darkgreen;
+}
+.close{
+    color: var(--white-color);
+    font-size: 3rem;
+    position: absolute;
+    left: 92%;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 20px;
+    background-color: var(--main-color);
+    margin-left: 2px;
+}
+.close:hover{
+    background-color: rgb(5, 5, 77);
+    transition: .5s;
+}
+.container.show1{
+    display: flex; 
+}
 .test{
     padding-bottom: 10rem;
 }

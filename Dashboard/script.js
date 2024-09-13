@@ -37,13 +37,13 @@ darkModeIcon.onclick=()=>{
     darkModeIcon.classList.toggle('bxs-sun');
     document.body.classList.toggle('dark-mode');
 };
-const modal1 = document.querySelector('.container');
+const modal1 = document.querySelector('.container2');
 const signInBtn1 = document.getElementById('pop_up');
-const closeBtn1 = document.querySelector('.close');
+const closeBtn1 = document.querySelector('.close2');
 
-const modal2 = document.querySelector('.container2');
+const modal2 = document.querySelector('.container');
 const signInBtn2 = document.getElementById('sign-up');
-const closeBtn2 = document.querySelector('.close2');
+const closeBtn2 = document.querySelector('.close');
 
 const modal3 = document.querySelector('.container3');
 const signInBtn3 = document.getElementById('forget');
