@@ -46,7 +46,7 @@ const signInBtn2 = document.getElementById('sign-up');
 const closeBtn2 = document.querySelector('.close');
 
 const modal3 = document.querySelector('.container3');
-const signInBtn3 = document.getElementById('forget');
+const signInBtn3 = document.getElementById('forget2');
 const closeBtn3 = document.querySelector('.close3');
 
 signInBtn1.onclick = function() {
@@ -69,7 +69,6 @@ closeBtn2.onclick = function() {
     modal2.classList.remove('show1');
     modal3.classList.remove('show2');
 }
-
 signInBtn3.onclick = function() {
     modal3.classList.add('show2');
     modal1.classList.remove('show');
@@ -78,7 +77,11 @@ signInBtn3.onclick = function() {
 closeBtn3.onclick = function() {
     modal3.classList.remove('show2');
 }
-
+const otp_inp = document.querySelector('.otpverify');
+const otp_btn = document.getElementById('btn3');
+    otp_btn.onclick = function(){
+        otp_inp.classList.add('active');
+    }
 // const typed= new Typed('.multiple-text',{
 //     strings:['Prepare with confidance.','For Smart Examination.'],
 //     typeSpeed:100,

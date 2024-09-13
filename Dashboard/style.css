@@ -15,7 +15,8 @@
     --main-color: rgb(27, 34, 141);
     --white-color: #fdfdfd;
     --shadow-color: rgba(0, 0, 0, .2);
-    --form-color: rgb(27, 34, 141);;
+    --form-color: #E6F3FF;
+    --ftxt-color:#1A365D;
 
 }
 .dark-mode{
@@ -23,6 +24,7 @@
     --text-color: #fafafa;
     --shadow-color: rgba(0, 0, 0, .7);
     --form-color: #fdfdfd;
+    --ftxt-color:rgb(27, 34, 141);
 }
 html{
     font-size: 62.5%;
@@ -373,7 +375,7 @@ span{
     color: #333;
 }
 
-/* .container{
+/* .container2{
     position: relative;
     left: 20%;
     height: 45rem;
@@ -390,14 +392,14 @@ span{
     transition: 0.5s ease; 
     background-color: var(--bg-color);
 }
-.container:hover{
+.container2:hover{
     box-shadow: 0 .1rem 2rem var(--shadow-color);
     transform: scale(1.02);
 }
-.container.show {
+.container2.show{
     display: flex; 
 }
-.container h2{
+.container2 h2{
     font-size: 2.5rem;
     color: var(--text-color);
     margin-top: 5rem;
@@ -418,7 +420,6 @@ span{
     justify-content: center;
     margin-top: 3rem;
 }
-
 .login_btn #log_in{
     height: 5rem;
     width: 35rem;
@@ -467,7 +468,7 @@ span{
 .elements{
     margin-top: 1rem;
 }
-.close{
+.close2{
     color: var(--white-color);
     font-size: 3rem;
     position: absolute;
@@ -477,7 +478,7 @@ span{
     background-color: var(--main-color);
     margin-left: 2px;
 }
-.close:hover{
+.close2:hover{
     background-color: rgb(5, 5, 77);
     transition: .5s;
 }
@@ -492,8 +493,8 @@ span{
     font-size: 2rem;
     color: var(--text-color);
     left: 85%;
-}
-
+} */
+/* 
 .container2{
     position: relative;
     left: 20%;
@@ -719,7 +720,7 @@ span{
     font-size: 2rem;
     color: var(--text-color);
     left: 85%;
-} */
+} */ 
 .container{
     position: relative;
     left: 20%;
@@ -731,7 +732,7 @@ span{
     align-items: center;
     border: 3dvh;
     border-radius: 10px;
-    box-shadow: 0px 0px 30px 30px rgba(5, 5, 5, 0.301);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     gap: 3rem;
     transition: .5s;
     display: none;
@@ -741,7 +742,7 @@ span{
     transform: scale(1.02);
 }
 .head{
-    color: var(--bg-color);
+    color: var(--ftxt-color);
     font-size:2.0rem;
     font-weight: 600;
     padding: 5px;
@@ -768,7 +769,7 @@ span{
     font-size: 15px;
     border-radius: 4px;
     padding-left: 15px;
-    border: 1px solid var(--bg-color);
+    border: 1px solid var(--ftxt-color);
     outline: none;
 }
 #email,#pass,#dateOfBirth{
@@ -777,7 +778,7 @@ span{
     width: 36rem;
     border-radius: 4px;
     padding-left: 15px;
-    border: 1px solid var(--bg-color);
+    border: 1px solid var(--ftxt-color);
     font-size: 15px;
     line-height: 16px;
     outline: none;
@@ -792,13 +793,19 @@ span{
     justify-content:space-between ;
     padding-bottom: 1.8rem;
 }
+.Gen{
+    color: var(--ftxt-color);
+}
+span i{
+    color: var(--white-color);
+}
 .sex{
     height: 3.5rem;
     width: 11.5rem;
     font-size: 15px;
     border-radius: 4px;
     padding-left: 15px;
-    border: 1px solid var(--bg-color);
+    border: 1px solid var(--ftxt-color);
     display: flex;
     align-items:center;
     padding-right: 2rem;
@@ -832,30 +839,33 @@ span{
     padding-top: .8rem;
     padding-bottom: .4rem;
     padding-left: .2rem;
-    color: var(--bg-color);
+    color: var(--ftxt-color);
 }
 .txt{
     font-size: 1.5rem;
     padding-top: 1.5rem;
     display: flex;
     justify-content: center;
-    color: var(--bg-color);
+    color: var(--ftxt-color);
 }
 .txt a{
     padding-left: 2%;
-    color: var(--bg-color);
+    color: var(--ftxt-color);
+}
+.txt a:hover{
+    text-decoration: underline;
 }
 button#signup:hover{
     background-color: darkgreen;
 }
 .close{
-    color: var(--white-color);
+    color: var(--ftxt-color);
     font-size: 3rem;
     position: absolute;
     left: 92%;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 20px;
-    background-color: var(--main-color);
+    background-color: var(--ftxt-color);
     margin-left: 2px;
 }
 .close:hover{
@@ -864,6 +874,212 @@ button#signup:hover{
 }
 .container.show1{
     display: flex; 
+}
+.container2{
+    position: relative;
+    left: 20%;
+    height: 45rem;
+    width: 40rem;
+    border-radius: 1.6rem;
+    border-top: .2rem solid var(--ftxt-color);
+    border-bottom: .2rem solid var(--ftxt-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    display: none; 
+    transition: 0.5s ease; 
+    background-color: var(--form-color);
+}
+.container2:hover{
+    box-shadow: 0 .1rem 2rem var(--shadow-color);
+    transform: scale(1.02);
+}
+.container2.show{
+    display: flex; 
+}
+.container2 h2{
+    font-size: 2.5rem;
+    color: var(--ftxt-color);
+    margin-top: 5rem;
+}
+.login_mail2{
+    height: 4rem;
+    width: 35rem;
+    border-bottom: 2px solid var(--ftxt-color);
+    display: flex;
+    justify-content: center;
+    
+}
+.login_pass2{
+    height: 4rem;
+    width: 35rem;
+    border-bottom: 2px solid var(--ftxt-color);
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+.login_btn2 #log_in2{
+    height: 5rem;
+    width: 35rem;
+    display: inline-block;
+    padding: 1.2rem 2.8rem;
+    background: var(--ftxt-color);
+    border-radius: 7px;
+    box-shadow: 0 .2rem .5rem var(--shadow-color);
+    font-size: 1.6rem;
+    letter-spacing: .1rem;
+    font-weight: 600;
+    border: .2rem solid transparent;
+    transition: .5s;
+    margin-top: 5rem;
+}
+.login_btn2 #log_in2:hover{
+    background-color:rgb(5, 5, 77);
+    transition: .5s;
+}
+#mail2{
+    width: 100%;
+    margin-left: 2rem;
+    font-size: 1.5rem;
+    background: transparent;
+}
+#pass2{
+    width: 100%;
+    margin-left: 2rem;
+    font-size: 1.5rem;
+    background: transparent;
+}
+.forgot2 label{
+    color: var(--ftxt-color);
+}
+.forgot2{
+    font-size: 1.35rem;
+    margin: 10px 0 15px;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+.forgot2 a{
+    position: relative;
+    left: 37%;
+    color: var(--ftxt-color);
+}
+#forget2:hover{
+    text-decoration: underline;
+}
+.elements2{
+    margin-top: 1rem;
+}
+.close2{
+    color: var(--white-color);
+    font-size: 3rem;
+    position: absolute;
+    left: 92%;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 20px;
+    background-color: var(--ftxt-color);
+    margin-left: 2px;
+}
+.close2:hover{
+    background-color: rgb(5, 5, 77);
+    transition: .5s;
+}
+.icon-mail2{
+    position: absolute;
+    font-size: 2rem;
+    color: var(--ftxt-color);
+    left: 85%;
+}
+.lock{
+    position: absolute;
+    font-size: 2rem;
+    color: var(--ftxt-color);
+    left: 85%;
+}
+/* otp */
+.container3{
+    position: relative;
+    left: 20%;
+    width: 50rem;
+    background-color: var(--form-color);
+    padding: 0 30px;
+    display: grid;
+    gap: 20px;
+    padding-bottom: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    transition: .5s;
+    opacity: 0;
+}
+.container3:hover{
+    box-shadow: 0 .1rem 2rem var(--shadow-color);
+    transform: scale(1.02);
+}
+.container3.show2{
+    opacity: 1;
+}
+.container3 input{
+    width: 100%;
+    padding: 10px;
+    border-radius:6px ;
+    border: 1px solid var(--ftxt-color);
+    background-color: var(--form-color);
+}
+.container3 #mail3{
+    height: 4.5rem;
+}
+.container3 h1{
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    color: var(--ftxt-color);
+}
+.otpverify{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding-top: 1rem;
+}
+.btn3{
+    width: 15rem;
+    height: 4.5rem;
+    background-color: #82eec1;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+.btn3:hover{
+    background-color: rgb(103, 229, 191);
+}
+.pad{
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+.close3{
+    color: var(--white-color);
+    font-size: 2.4rem;
+    position: absolute;
+    left: 95%;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 20px;
+    background-color: var(--ftxt-color);
+    margin-left: 2px;
+}
+.close3:hover{
+    background-color: rgb(5, 5, 77);
+    transition: .5s;
+}
+.otpverify{
+    display: none;
+}
+.otpverify.active{
+    display: flex;
 }
 .test{
     padding-bottom: 10rem;
@@ -931,6 +1147,7 @@ button#signup:hover{
     font-size: 2rem;
     color: #333;
 }
+
 @media(max-width:1550px){
     html{
         font-size: 55%;
@@ -1112,7 +1329,6 @@ button#signup:hover{
         height: 6rem;
     }
 }
-
 @media(max-width:980px){
     .search{
         width: 70vw;

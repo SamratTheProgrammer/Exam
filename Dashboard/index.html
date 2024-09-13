@@ -34,33 +34,32 @@
             </form>
         </div>
             <div class="image">
-                <img src="exam-removebg.pn" alt="">
+                <img src="exam-removebg.png" alt="">
             </div>
-            <!-- <div class="container">
-                <span class="close"><ion-icon name="close"></ion-icon></span>
-                        <h2>Sign in to account</h2>
+            <div class="container2">
+                <span class="close2"><i class='bx bx-x' name="close2"></i></span>
+                        <h2>Sign in to ExamNex</h2>
                         <form action="#" method="post">
-                <div class="elements">
-                    <div class="login_mail">
-                        <input type="email or phone number" id="mail" placeholder="Email address or phone number" required>
-                        <span class="icon-mail"><ion-icon name="mail"></ion-icon></span>
+                <div class="elements2">
+                    <div class="login_mail2">
+                        <input type="email or phone number" id="mail2" placeholder="Email address or phone number" required>
+                        <span class="icon-mail2"><ion-icon name="mail"></ion-icon></span>
                     </div>
-                    <div class="login_pass">
-                        <input type="password" id="pass" placeholder="Password" required>
-                        <span class="lock" id=""><ion-icon name="lock-closed"></ion-icon></span>
+                    <div class="login_pass2">
+                        <input type="password" id="pass2" placeholder="Password" required>
+                        <span class="lock"><ion-icon name="lock-closed"></ion-icon></span>
                     </div>
-                    <div class="login_btn">
-                        <button type="submit" id="log_in"><span>Sign in</span></button>
+                    <div class="login_btn2">
+                        <button type="submit" id="log_in2"><span>Sign in</span></button>
                     </div>
                 </div>
-                    <div class="forgot">
+                    <div class="forgot2">
                     <label><input type="checkbox"> Remember me</label>
-                        <a href="#" id="forget"> forgot password?</a>
+                        <a href="#" id="forget2"> forgot password?</a>
                     </div>
                 </form>
                 </div>
-                
-                <div class="container2">
+                <!-- <div class="container2">
                     <span class="close2"><i class='bx bx-x' name="close2"></i></span>
                             <h2>Sign up to account</h2>
                             <form action="#" method="post">
@@ -104,7 +103,7 @@
                         </div>
                         </div> -->
                     <div class="container">
-                        <span class="close"><ion-icon name="close"></ion-icon></span>
+                        <span class="close"><i class='bx bx-x' name="close"></i></span>
                         <div class="head">
                             <h2><b>Create a new account</b></h2>
                             <h4><b>It's quick and easy.</b></h4>
@@ -139,6 +138,21 @@
                             <button type="submit" class="signup" id="signup"><b> Sign up</b></button>
                             <p class="txt">Already have an account?<a href="#">Sign In</a></p>
                         </form>
+                    </div>
+                    <!-- otp -->
+                    <div class="container3">
+                        <span class="close3"><i class='bx bx-x' name="close2"></i></span>
+                        <h1>Reset Your OTP</h1>
+                        <div class="login_mail3">
+                        <input type="email or phone number" id="mail3" placeholder="Enter Email or Phone Number...">
+                    </div>
+                        <div class="otpverify">
+                            <input type="text" id="otp_inp" placeholder="Enter the OTP sent your email">
+                            <button class="btn3" id="otp-btn">Verify</button>
+                        </div>
+                        <div class="pad">
+                        <button class="btn3" id="btn3" onclick="sendOTP()">Send OTP</button>
+                    </div>
                     </div>
         </section>
         <section class="test" id="test">
@@ -260,7 +274,7 @@
                     <input type="email" placeholder="Email Address" name="email" required>
                 </div>
                 <div class="input-box">
-                    <input type="number" placeholder="Mobile Number" name="mno" required>
+                    <input type="phone number" placeholder="Mobile Number" name="mno" required>
                     <input type="text" placeholder="Email Subject" name="text" required>
                 </div>
                 <textarea name="sent_text" id="sent_text" cols="30" rows="10" placeholder="Your Message"></textarea>
