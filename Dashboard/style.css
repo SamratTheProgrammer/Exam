@@ -736,6 +736,7 @@ span{
     gap: 3rem;
     transition: .5s;
     display: none;
+    transition: .5s;
 }
 .container:hover{
     box-shadow: 0 .1rem 2rem var(--shadow-color);
@@ -889,7 +890,7 @@ button#signup:hover{
     align-items: center;
     gap: 3rem;
     display: none; 
-    transition: 0.5s ease; 
+    transition: .5s; 
     background-color: var(--form-color);
 }
 .container2:hover{
@@ -1162,6 +1163,24 @@ button#signup:hover{
     .search-button {
         width: 27%;
     }
+    .container{
+        padding: 0 2rem;
+    }
+    .container2{
+        padding: 0 2rem;
+    }
+    .ratio{
+        left: 1.8rem;
+    }
+    .txt{
+        font-size: 1.7rem;
+    }
+    .forgot2{
+        font-size: 1.5rem;
+    }
+    a .forget2{
+        padding-left: -3rem;
+    }
 }
 @media(max-width:1300px){
     html{
@@ -1173,7 +1192,6 @@ button#signup:hover{
     .search{
         width: 60vw;
         height: 10vh;
-        
     }
     .search-input {
         width: 45%;
@@ -1187,6 +1205,9 @@ button#signup:hover{
         height: 5.3rem;
         left: 40%;
         font-size: 1.7rem;
+    }
+    .ratio{
+        left: 10%;
     }
 }
 @media(max-width:1050px){
@@ -1328,7 +1349,28 @@ button#signup:hover{
         bottom: 52.5%;
         height: 6rem;
     }
-}
+    .container{
+        left: 10%;
+        height: 58rem;
+        width: 44rem;
+    }
+    .nm #fn,#ln{
+             font-size: 2rem;
+    }
+    .auth #email,#pass{
+        font-size: 2rem;
+    }
+     .Gen{
+        font-size: 1.8rem;
+     }
+     .sex{
+        padding-right: 3rem;
+     }
+     .auth p{
+        font-size: 1.8rem;
+     }
+    }
+
 @media(max-width:980px){
     .search{
         width: 70vw;
