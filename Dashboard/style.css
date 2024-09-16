@@ -1410,7 +1410,7 @@ button#signup:hover{
         font-size: 30%;
     }
     .image{
-        padding-left: 5rem;
+        display: none;
     }
     .search{
         width: 60vw;
