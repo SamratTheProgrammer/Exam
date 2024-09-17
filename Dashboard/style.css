@@ -1148,7 +1148,14 @@ button#signup:hover{
     font-size: 2rem;
     color: #333;
 }
-
+@media(max-width:1700px){
+    .container{
+        padding: 0 2rem;
+    }
+    .container2{
+        padding: 0 2rem;
+    }
+}
 @media(max-width:1550px){
     html{
         font-size: 55%;
