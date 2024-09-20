@@ -815,10 +815,7 @@ span i{
     align-items:center;
     padding-right: 2rem;
     color: var(--bg-color);
-}
-.ratio{
-    position: relative;
-    left: 2.5rem;
+    justify-content: space-between;
 }
 .signup{
     background: none;
