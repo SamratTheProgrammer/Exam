@@ -788,6 +788,10 @@ span{
     padding-bottom: 1.8rem;
     display: flex;
     flex-direction: column;
+    padding-top: 2rem;
+}
+.email{
+    padding-bottom: 2rem;
 }
 .gender{
     display: flex;
@@ -1362,20 +1366,20 @@ button#signup:hover{
         width: 44rem;
     }
     .nm #fn,#ln{
-             font-size: 2rem;
+        font-size: 2rem;
     }
     .auth #email,#pass{
         font-size: 2rem;
     }
-     .Gen{
+    .Gen{
         font-size: 1.8rem;
-     }
-     .sex{
+    }
+    .sex{
         padding-right: 3rem;
-     }
-     .auth p{
+    }
+    .auth p{
         font-size: 1.8rem;
-     }
+    }
     }
 
 @media(max-width:980px){
@@ -1410,6 +1414,134 @@ button#signup:hover{
     }
     .contact form{
         max-width: 80rem;
+    }
+    .container{
+        position: absolute;
+        left:35%;
+        height: 50%;
+        width: 42%;
+    }
+    .head{
+        font-size: 3rem;
+        padding-top: 2.6rem;
+    }
+    .input{
+        width: 53rem;
+    }
+    .name{
+        height: 5rem;
+        width: 26rem;
+    }
+    #email,#pass,#dateOfBirth{
+        height: 5rem;
+        width: 53rem;
+    }
+    .gender{
+        padding-top: 2rem;
+    }
+    .sex{
+        height: 5rem;
+        width: 17rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    .Gen{
+        font-size: 2.1rem;
+        display: flex;
+    }
+    .signup{
+        height: 5rem;
+        width: 17rem;
+        font-size: 2rem;
+    }
+    .auth p{
+        font-size: 2rem;
+        padding-top: 2rem;
+    }
+    .txt{
+        font-size: 2.3rem;
+        padding-top: 2.5rem;
+    }
+    .email{
+        padding-bottom: 3rem;
+    }
+    .close{
+        left: 94.5%;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 40px;
+    }
+    .container2{
+        position: absolute;
+        left: 35%;
+        height: 55rem;
+        width: 55rem;
+    }
+    .close2{
+        left: 94%;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 40px;
+    }
+    .container2 h2{
+        font-size: 4rem;
+        padding-bottom: 2rem;
+    }
+    .login_mail2{
+        width: 50rem;
+        padding-left: 3rem;
+    }
+    .login_pass2{
+        width: 50rem;
+        padding-left: 3rem;
+    }
+    .login_btn2 #log_in2{
+        width: 50rem;
+        height: 7rem;
+        font-size: 2.5rem;
+    }
+    .login_btn2{
+        padding-top: 1rem;
+    }
+    .forgot2{
+        font-size: 2rem;
+    }
+    .icon-mail2,#mail2,#pass2,.lock{
+        font-size: 2rem;
+    }
+    .pass_pad{
+        padding-top: 3rem;
+    }
+    .container3{
+        position: absolute;
+        left: 35%;
+        width: 60rem;
+    }
+    .container3 #mail3{
+        height: 6rem;
+    }
+    .container3 h1{
+        font-size: 4rem;
+        padding-bottom: 1rem;
+        padding-top: 3rem;
+    }
+    .container3 input{
+        padding-left: 3rem;
+    }
+    input #otp_inp,#mail3{
+        height: 5rem;
+    }
+    .otpverify{
+        height: 7rem;
+    }
+    .close3{
+        left: 95.5%;
+    }
+    .btn3{
+        height: 6rem;
+        width: 17rem;
+        font-size: 2rem;
+    }
+    .pad{
+        padding-top: 2rem;
     }
 }
 @media(max-width:798px){
