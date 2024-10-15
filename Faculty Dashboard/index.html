@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="logo-removebg-preview1.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable=no>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="/your-path-to-uicons/css/uicons-[your-style].css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="logo.png" alt="logo">
+                </span>
+
+                <div class="text header-text">
+                    <span class="name">ExamNex</span>
+                    <span class="profession">Examiner Panel</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                        <input type="search" placeholder="Search...">
+                </li>
+                <ul class="menu-links">
+                    <li class="nav-links">
+                        <a href="#dashboard">
+                            <i class='bx bx-home icon'></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-links">
+                        <a href="#course">
+                            <i class="bi bi-mortarboard icon"></i>
+                            <span class="text nav-text">Manage Courses</span>
+                        </a>
+                    </li>
+                    <li class="nav-links">
+                        <a href="#exam">
+                            <i class="bi bi-pen icon"></i>
+                            <span class="text nav-text">Manage Exams</span>
+                        </a>
+                    </li>
+                    <li class="nav-links">
+                        <a href="#result">
+                            <i class='bx bx-bar-chart-alt-2 icon'></i>
+                            <span class="text nav-text">Manage Results</span>
+                        </a>
+                    </li>
+                    
+                <div class="bottom-content">
+                    <li class="">
+                        <a href="#profile">
+                            <i class="bi bi-person icon"></i>
+                            <span class="text nav-text">Profile</span>
+                        </a>
+                    </li>
+                </ul>
+                    <li class="">
+                        <a href="#">
+                            <i class="bx bx-log-out icon"></i>
+                            <span class="text nav-text">Logout</span>
+                        </a>
+                    </li>
+                    <li class="mode">
+                            <div class="moon-sun">
+                                <i class="bx bx-moon icon moon"></i>
+                                <i class="bx bx-sun icon sun"></i>
+                            </div>
+                            <span class="mode-text text">Dark Mode</span>
+                            <div class="toggle-switch">
+                                <span class="switch"></span>
+                            </div>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="dashboard" id="dashboard">
+        <div class="activity">
+            <div class="title">
+        <i class='bx bx-tachometer'></i>
+        <span class="text">Dashboard</span>
+    </div>
+</div>
+        <div class="dash-content">
+        <div class="boxes">
+            <div class="box box1">
+                <i class="bi bi-people-fill"></i>
+                <span class="text">Total Students</span>
+                <span class="number">50,120</span>
+            </div>
+            <a href="#available-exam" class="box box2">
+                <i class="bi bi-book-half"></i>
+                <span class="text">Exams</span>
+                <span class="number">1,120</span>
+            </a>
+            <div class="box box3">
+                <i class="bi bi-code-slash"></i>
+                <span class="text">Top Categories</span>
+                <span class="number">16,180</span>
+            </div>
+        </div>
+        <div class="activity">
+            <div class="title">
+                <i class='bx bx-time-five'></i>
+                <span class="text">Activity</span>
+            </div>
+            <div class="activity-data">
+                <div class="data names">
+                    <span class="data-titles">Name</span>
+                    <span class="data-list">Samrat Saha</span>
+                    <span class="data-list">Barsha Majahan</span>
+                    <span class="data-list">Sagnik Ghosh</span>
+                    <span class="data-list">Jayshree Dey</span>
+                    <span class="data-list">Adrika Dutta</span>
+                    <span class="data-list">Srinjan Mondal</span>
+                </div>
+                <div class="data email">
+                    <span class="data-titles">Email</span>
+                    <span class="data-list">samratsahaonline@gmail.com</span>
+                    <span class="data-list">barsham734@gmail.com</span>
+                    <span class="data-list">ghoshbabu@gmail.com</span>
+                    <span class="data-list">churiyel@gmail.com</span>
+                    <span class="data-list">adrika2004@gmail.com</span>
+                    <span class="data-list">srinjanbro@gmail.com</span>
+                </div>
+                <div class="data joined">
+                    <span class="data-titles">Joined</span>
+                    <span class="data-list">2024-09-30</span>
+                    <span class="data-list">2024-04-24</span>
+                    <span class="data-list">2024-07-06</span>
+                    <span class="data-list">2024-01-09</span>
+                    <span class="data-list">2024-05-01</span>
+                    <span class="data-list">2024-06-30</span>
+            </div>
+                <div class="data type">
+                    <span class="data-titles">Type</span>
+                    <span class="data-list">New</span>
+                    <span class="data-list">New</span>
+                    <span class="data-list">Old</span>
+                    <span class="data-list">Old</span>
+                    <span class="data-list">New</span>
+                    <span class="data-list">Old</span>
+            </div>
+                <div class="data status">
+                    <span class="data-titles">Status</span>
+                    <span class="data-list">Active</span>
+                    <span class="data-list">Offline</span>
+                    <span class="data-list">Active</span>
+                    <span class="data-list">Offline</span>
+                    <span class="data-list">Offline</span>
+                    <span class="data-list">Active</span>
+            </div>
+        </div>
+    </div>
+    </section>
+    <section class="course" id="course">
+        <div class="activity"></div>
+            <div class="title">
+                <i class='bx bx-edit'></i>
+        <span class="text">Manage Courses</span>
+    </div>
+</div>
+    <div class="add-course">
+        <div class="course-input">
+        <input type="text" name="course_id" id="c_id" placeholder="Course Id" required>
+        <input type="text" name="course_name" id="c_name" placeholder="Course Name" required> </div>
+        <textarea name="sent_text" id="sent_text" cols="30" rows="10" placeholder="Course Description" required></textarea> 
+        <div class="btn">
+        <button type="submit" id="add_btn"><i class='bx bx-plus'></i>Add Course</button>
+    </div>
+    </div>
+    <div class="activity">
+            <div class="title title2">
+                <i class="bi bi-display"></i>
+        <span class="text">Available Courses</span>
+    </div>
+</div>
+<div class="course-data">
+    <div class="course-heading">
+        <span class="data-type">Id</span>
+        <span class="data-type">Name</span>
+        <span class="data-type">Duration</span>
+        <span class="data-type type">Type</span>
+        <span class="data-type">Edit/Remove</span>
+        <span class="data-type">Status</span>
+    </div>
+    <div class="course-details">
+        <span class="course-data">001</span>
+        <span class="course-data">Python</span>
+        <span class="course-data ">6 months</span>
+        <span class="course-data">Free</span>
+        <div class="update">
+        <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
+        <button class="remove" type="submit"><i class="bi bi-trash3"></i></button></div>
+        <span class="course-data">Active</span>
+    </div>
+    <div class="course-details">
+        <span class="course-data">001</span>
+        <span class="course-data">Python</span>
+        <span class="course-data ">6 months</span>
+        <span class="course-data">Free</span>
+        <div class="update">
+        <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
+        <button class="remove" type="submit"><i class="bi bi-trash3"></i></button></div>
+        <span class="course-data">Active</span>
+    </div>
+    <div class="course-details">
+        <span class="course-data">001</span>
+        <span class="course-data">Python</span>
+        <span class="course-data ">6 months</span>
+        <span class="course-data">Free</span>
+        <div class="update">
+        <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
+        <button class="remove" type="submit"><i class="bi bi-trash3"></i></button></div>
+        <span class="course-data">Active</span>
+    </div>
+    <div class="course-details">
+        <span class="course-data">001</span>
+        <span class="course-data">Python</span>
+        <span class="course-">6 months</span>
+        <span class="course-data">Free</span>
+        <div class="update">
+        <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
+        <button class="remove" type="submit"><i class="bi bi-trash3"></i></button></div>
+        <span class="course-data">Active</span>
+    </div>
+    <div class="course-details">
+        <span class="course-data">001</span>
+        <span class="course-data">Python</span>
+        <span class="course-data ">6 months</span>
+        <span class="course-data">Free</span>
+        <div class="update">
+        <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
+        <button class="remove" type="submit"><i class="bi bi-trash3"></i></button></div>
+        <span class="course-data">Active</span>
+    </div>
+</div>
+    </section>
+    <section class="exam" id="exam">
+        <div class="activity">
+            <div class="title">
+                <i class='bx bx-edit'></i>
+        <span class="text">Manage Exams</span>
+    </div>
+</div>
+    <div class="add-exam">
+        <div class="exam-input">
+        <input type="text" name="exam_id" id="e_id" placeholder="Exam Id" required>
+        <input type="text" name="exam_name" id="e_name" placeholder="Exam Name" required> </div>
+        <textarea name="question" id="question" cols="30" rows="10" placeholder="Write the Question..." required></textarea>
+        <input type="text" name="options" id="options" placeholder="Option 1" required>
+        <input type="text" name="options" id="options" placeholder="Option 2" required>
+        <input type="text" name="options" id="options" placeholder="Option 3">
+        <input type="text" name="options" id="options" placeholder="Option 4">
+        <input type="text" name="options" id="options" placeholder="Option 5">
+        
+        <div class="btn">
+            <button type="submit" id="add_qs"><i class='bx bx-plus'></i> Add more questions</button>
+            <button type="submit" id="add_btn"><i class='bx bx-plus'></i>Add Exam</button>
+            <button type="reset" id="add_dlt"><i class="bi bi-trash3-fill"></i> Delete question</button>
+    </div>
+            <div class="btn">
+            <button type="#" id="previous"><i class="bi bi-skip-backward-fill"></i> Previous</button>
+            <button type="#" id="next">Next <i class="bi bi-skip-forward-fill next"></i></i></button>
+        </div>
+    </div>
+</section>
+<section class="available-exam" id="available-exam">
+    <div class="activity">
+        <div class="title">
+            <i class="bi bi-display"></i>
+    <span class="text">Available Exams</span>
+</div>
+</div>
+<div class="course-data"></div>
+    <div class="course-heading">
+        <span class="data-type">Id</span>
+        <span class="data-type">Subject</span>
+        <span class="data-type">Date</span>
+        <span class="data-type type">Timming</span>
+        <span class="data-type">Edit/Remove</span>
+        <span class="data-type">Examinee</span>
+    </div>
+    <div class="course-details">
+        <span class="course-data">001</span>
+        <span class="course-data">Python</span>
+        <span class="course-data">06.10.2024</span>
+        <span class="course-data">11 AM to 12 PM</span>
+        <div class="update">
+        <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
+        <button class="remove" type="submit"><i class="bi bi-trash3"></i></button></div>
+        <span class="course-data">1069</span>
+    </div>
+    <div class="course-details">
+        <span class="course-data">002</span>
+        <span class="course-data">Python</span>
+        <span class="course-data">16.10.2024</span>
+        <span class="course-data">2 PM to 5 PM</span>
+        <div class="update">
+        <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
+        <button class="remove" type="submit"><i class="bi bi-trash3"></i></button></div>
+        <span class="course-data">9000</span>
+    </div>
+    <div class="course-details">
+        <span class="course-data">001</span>
+        <span class="course-data">Python</span>
+        <span class="course-data">26.10.2024</span>
+        <span class="course-data">2 PM to 5 PM</span>
+        <div class="update">
+        <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
+        <button class="remove" type="submit"><i class="bi bi-trash3"></i></button></div>
+        <span class="course-data">1000</span>
+    </div>
+    <div class="course-details">
+        <span class="course-data">001</span>
+        <span class="course-data">Python</span>
+        <span class="course-data">26.10.2024</span>
+        <span class="course-data">2 PM to 5 PM</span>
+        <div class="update">
+        <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
+        <button class="remove" type="submit"><i class="bi bi-trash3"></i></button></div>
+        <span class="course-data">7500</span>
+    </div>
+    <div class="course-details">
+        <span class="course-data">001</span>
+        <span class="course-data">Python</span>
+        <span class="course-data">26.10.2024</span>
+        <span class="course-data">2 PM to 5 PM</span>
+        <div class="update">
+        <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
+        <button class="remove" type="submit"><i class="bi bi-trash3"></i></button></div>
+        <span class="course-data">4000</span>
+    </div>
+    <div class="course-details">
+        <span class="course-data">001</span>
+        <span class="course-data">Python</span>
+        <span class="course-data">26.10.2024</span>
+        <span class="course-data">2 PM to 5 PM</span>
+        <div class="update">
+        <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
+        <button class="remove" type="submit"><i class="bi bi-trash3"></i></button></div>
+        <span class="course-data">5000</span>
+    </div>
+    <div class="course-details">
+        <span class="course-data">001</span>
+        <span class="course-data">Python</span>
+        <span class="course-data">26.10.2024</span>
+        <span class="course-data">2 PM to 5 PM</span>
+        <div class="update">
+        <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
+        <button class="remove" type="submit"><i class="bi bi-trash3"></i></button></div>
+        <span class="course-data">4578</span>
+    </div>
+    <div class="course-details">
+        <span class="course-data">001</span>
+        <span class="course-data">Python</span>
+        <span class="course-data">26.10.2024</span>
+        <span class="course-data">2 PM to 5 PM</span>
+        <div class="update">
+        <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
+        <button class="remove" type="submit"><i class="bi bi-trash3"></i></button></div>
+        <span class="course-data">3006</span>
+    </div>
+    <div class="course-details">
+        <span class="course-data">001</span>
+        <span class="course-data">Python</span>
+        <span class="course-data">26.10.2024</span>
+        <span class="course-data">2 PM to 5 PM</span>
+        <div class="update">
+        <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
+        <button class="remove" type="submit"><i class="bi bi-trash3"></i></button></div>
+        <span class="course-data">2024</span>
+    </div>
+    <div class="course-details">
+        <span class="course-data">001</span>
+        <span class="course-data">Python</span>
+        <span class="course-data">26.10.2024</span>
+        <span class="course-data">2 PM to 5 PM</span>
+        <div class="update">
+        <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
+        <button class="remove" type="submit"><i class="bi bi-trash3"></i></button></div>
+        <span class="course-data">2020</span>
+    </div>
+</div>
+</section>
+<section class="student-result" id="result">
+    <div class="activity">
+        <div class="title">
+            <i class='bx bx-edit'></i>
+    <span class="text">Manage Results</span>
+</div>
+</div><div class="roll">
+    <div class="search-roll">
+    <i class='bx bx-search icon'></i><input type="search" name="std-roll" id="roll" placeholder="Search the student Roll number">
+</div>
+<button type="submit" id="src">Search</button>
+</div>
+<div class="std-details"></div>
+    
+</div>
+<div class="activity">
+    <div class="title">
+        <i class='bx bx-certification'></i>
+<span class="text">Certificate</span>
+</div>
+</div>
+<div class="certificate">
+<div class="certificate-filled">
+<input type="text" class="certificate-input" name="std_name" id="std_name" placeholder="Student Name">
+<input type="text" class="certificate-input" name="std_roll" id="std_roll" placeholder="Student Roll No">
+<input type="text" class="certificate-input" name="std_subject" id="std_subject" placeholder="Subject">
+<input type="text" class="certificate-input" name="std_marks" id="std_marks" placeholder="Marks in percentage">
+<input type="text" class="certificate-input" name="std_year" id="std_year" placeholder="Year">
+</div>
+<button type="button" class="certificate-btn">Issue Certificate <i class="bi bi-patch-check-fill"></i></button>
+</div>
+</section>
+    <script src="script.js"></script>
+</body>
+</html>
