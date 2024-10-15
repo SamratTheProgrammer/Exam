@@ -75,6 +75,7 @@ body.dark{
 }
 .sidebar.close .text{
     opacity: 0;
+    pointer-events: none;
 }
 .sidebar .image{
     min-width: 6rem;
