@@ -523,9 +523,7 @@ section{
     width: 90%;
 }
 .exam-question{
-    gap: 1rem;
     width: 90%;
-    
 }
 .exam-question #options{
     margin-top: 1rem;
@@ -847,15 +845,22 @@ section{
         height: 80%;
     }
     .sidebar li .icon{
-        min-width: 4rem;
+        width: 2.5rem;
         font-size: 1.6rem;
-        padding-left: 1.3rem;
+        padding-left: 1.2rem;
     }
-    .bottom-content{
-        bottom: 0;
+    .nav-links .text{
+        margin-left: -2rem;
     }
+    .nav-links{
+        margin-bottom: -0.5rem;
+    }
+    
     .sidebar .menu-bar{
         height: calc(100% - 20px);
+    }
+    .search-box input{
+        margin-left: -2rem;
     }
     .toggle-switch .switch{
         height: 2rem;
@@ -896,6 +901,10 @@ section{
     .box .number{
         font-size: 3rem;
     }
+    .dash-content .boxes .box .text{
+    padding-left: 5.5rem;
+    font-size: 1.7rem;
+    }
     .dashboard .text{
         font-size: 2.2rem;
         margin-left: -2rem;
@@ -935,5 +944,34 @@ section{
         font-size: 2.2rem;
         margin-left: -2rem;
     }
-
+    .certificate-filled{
+        margin-top: -1rem;
+    }
+}
+@media(max-width:1000px){
+    .add-course #c_name{
+        width: 77%;
+    }
+    .add-course #c_id{
+        width: 20%;
+    }
+    .add-exam #e_name{
+        width: 77%;
+    }
+    .add-exam #e_id{
+        width: 20%;
+    }
+    .profile-box{
+        height: 55%;
+    }
+    .certificate-filled{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: -2rem;
+        margin-left: 1rem;
+    }
+    .certificate-input{
+        width: 90%;
+        margin-top: 1rem;
+    }
 }
