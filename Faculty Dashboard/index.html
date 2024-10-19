@@ -57,15 +57,15 @@
                             <span class="text nav-text">Manage Results</span>
                         </a>
                     </li>
-                    
+                </ul>
                 <div class="bottom-content">
                     <li class="">
-                        <a href="#profile">
+                        <a href="#profile" id="open-profile">
                             <i class="bi bi-person icon"></i>
                             <span class="text nav-text">Profile</span>
                         </a>
                     </li>
-                </ul>
+                
                     <li class="">
                         <a href="#">
                             <i class="bx bx-log-out icon"></i>
@@ -105,11 +105,11 @@
                 <span class="text">Exams</span>
                 <span class="number">1,120</span>
             </a>
-            <div class="box box3">
+            <a href="#course" class="box box3">
                 <i class="bi bi-code-slash"></i>
                 <span class="text">Top Categories</span>
                 <span class="number">16,180</span>
-            </div>
+            </a>
         </div>
         <div class="activity">
             <div class="title">
@@ -175,8 +175,11 @@
     <div class="add-course">
         <div class="course-input">
         <input type="text" name="course_id" id="c_id" placeholder="Course Id" required>
-        <input type="text" name="course_name" id="c_name" placeholder="Course Name" required> </div>
+        <input type="text" name="course_name" id="c_name" placeholder="Course Name" required> 
+    </div>
+    <div class="course-textarea">
         <textarea name="sent_text" id="sent_text" cols="30" rows="10" placeholder="Course Description" required></textarea> 
+    </div>
         <div class="btn">
         <button type="submit" id="add_btn"><i class='bx bx-plus'></i>Add Course</button>
     </div>
@@ -187,7 +190,7 @@
         <span class="text">Available Courses</span>
     </div>
 </div>
-<div class="course-data">
+<div class="course-datas" id="course">
     <div class="course-heading">
         <span class="data-type">Id</span>
         <span class="data-type">Name</span>
@@ -229,7 +232,7 @@
     <div class="course-details">
         <span class="course-data">001</span>
         <span class="course-data">Python</span>
-        <span class="course-">6 months</span>
+        <span class="course-data">6 months</span>
         <span class="course-data">Free</span>
         <div class="update">
         <button class="edit" type="submit"><i class="bi bi-pencil-square"></i></button>
@@ -258,14 +261,16 @@
     <div class="add-exam">
         <div class="exam-input">
         <input type="text" name="exam_id" id="e_id" placeholder="Exam Id" required>
-        <input type="text" name="exam_name" id="e_name" placeholder="Exam Name" required> </div>
+        <input type="text" name="exam_name" id="e_name" placeholder="Exam Name" required> 
+    </div>
+    <div class="exam-question">
         <textarea name="question" id="question" cols="30" rows="10" placeholder="Write the Question..." required></textarea>
         <input type="text" name="options" id="options" placeholder="Option 1" required>
         <input type="text" name="options" id="options" placeholder="Option 2" required>
         <input type="text" name="options" id="options" placeholder="Option 3">
         <input type="text" name="options" id="options" placeholder="Option 4">
         <input type="text" name="options" id="options" placeholder="Option 5">
-        
+        </div>
         <div class="btn">
             <button type="submit" id="add_qs"><i class='bx bx-plus'></i> Add more questions</button>
             <button type="submit" id="add_btn"><i class='bx bx-plus'></i>Add Exam</button>
@@ -284,7 +289,7 @@
     <span class="text">Available Exams</span>
 </div>
 </div>
-<div class="course-data"></div>
+<div class="course-datas"></div>
     <div class="course-heading">
         <span class="data-type">Id</span>
         <span class="data-type">Subject</span>
@@ -426,6 +431,21 @@
 </div>
 <button type="button" class="certificate-btn">Issue Certificate <i class="bi bi-patch-check-fill"></i></button>
 </div>
+</section>
+<section class="profile" id="profile">
+    <div class="profile-box">
+        <div class="profile-img">
+            <img src="pic-1.jpg" alt="">
+        </div>
+        <div class="pro-name">
+        <span class="username">Mr. Akash</span>
+        <span class="examiner">Examiner</span>
+    </div>
+    <div class="update-profile-btns">
+    <button type="submit" id="up-pro"><i class='bx bx-edit'></i> Update Profile</button>
+    <button type="submit" id="log-out"><i class="bx bx-log-out icon"></i> Log Out</button>
+</div>
+    </div>
 </section>
     <script src="script.js"></script>
 </body>

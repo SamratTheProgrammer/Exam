@@ -224,6 +224,10 @@ body.dark .menu-bar .mode i.moon{
     cursor: pointer;
     background: var(--primary-color-light);
 }
+.bottom-content{
+    position: relative;
+    bottom: -5%;
+}
 .toggle-switch .switch{
     position: relative;
     height: 2.2rem;
@@ -243,9 +247,6 @@ body.dark .menu-bar .mode i.moon{
     background: var(--sidebar-color);
     transition: var(--tran-03);
 }
-.bottom-content{
-    margin-top: 4rem;
-}
 
 body.dark .switch::before{
     left:2.5rem;
@@ -258,6 +259,7 @@ section{
     background: var(--body-color);
     transition: var(--tran-05);
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 .sidebar.close ~ section{
     left: 8.8rem;
@@ -370,6 +372,9 @@ section{
     width: 100%;
     height: 20rem;
 }
+.course-input ,.course-textarea{
+    width: 90%;
+}
 .add-course input,textarea,button{
     outline: none;
     border: none;
@@ -377,7 +382,7 @@ section{
 }
 .add-course #c_name,textarea{
     height: 3rem;
-    width: 70rem;
+    width: 85%;
     padding-left: 2rem;
     font-size: 1rem;
     background-color: var(--sidebar-color);
@@ -385,7 +390,7 @@ section{
 }
 .add-course #c_id{
     height: 3rem;
-    width: 10rem;
+    width: 12%;
     padding-left: 2rem;
     font-size: 1rem;
     background-color: var(--sidebar-color);
@@ -394,8 +399,8 @@ section{
 .add-course textarea{
     padding-top: 1rem;
     resize: none;
-    height: 30rem;
-    width: 80rem;
+    height: 12rem;
+    width: 97.4%;
 }
 .course-input{
     padding-bottom: 1rem;
@@ -512,6 +517,18 @@ section{
     align-items: center;
     width: 100%;
     height: 40rem;
+    margin-top: 2rem;
+}
+.exam-input{
+    width: 90%;
+}
+.exam-question{
+    gap: 1rem;
+    width: 90%;
+    
+}
+.exam-question #options{
+    margin-top: 1rem;
 }
 .btn i{
     padding-right: 1rem;
@@ -526,7 +543,7 @@ section{
 }
 .add-exam #e_name{
     height: 3rem;
-    width: 70rem;
+    width: 85%;
     padding-left: 2rem;
     font-size: 1rem;
     background-color: var(--sidebar-color);
@@ -534,7 +551,7 @@ section{
 }
 .add-exam #e_id{
     height: 3rem;
-    width: 10rem;
+    width: 12%;
     padding-left: 2rem;
     font-size: 1rem;
     background-color: var(--sidebar-color);
@@ -542,9 +559,8 @@ section{
 }
 .add-exam #options{
     padding-left: 2rem;
-    resize: none;
     height: 3rem;
-    width: 80rem;
+    width: 97.5%;
     font-size: 1rem;
     background-color: var(--sidebar-color);
 }
@@ -552,7 +568,7 @@ section{
     padding-top: 2.2rem;
     height: 6rem;
     resize: none;
-    width: 80rem;
+    width: 97.5%;
     background-color: var(--sidebar-color);
 }
 .exam-input{
@@ -676,9 +692,9 @@ section{
 }
 .std-details{
     height: 17rem;
-    width: 98%;
+    width: 96%;
     border-radius: 10px;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
     background-color: var(--sidebar-color);
 }
 .certificate{
@@ -689,9 +705,9 @@ section{
 .certificate-filled{
     display: flex;
     justify-content: space-around;
-    width: 98%;
     margin-bottom: 3rem;
     margin-top: 3rem;
+    width: 98%;
 }
 .certificate-input{
     width: 18rem;
@@ -703,6 +719,7 @@ section{
     border: none;
     color: var(--text-color);
     background-color: var(--sidebar-color);
+    width: calc(100% /5 - 10px);
 }
 .certificate-btn{
     background-color: #695cfe;
@@ -719,4 +736,204 @@ section{
 .certificate-btn:hover{
     background-color: #6f19d8;
     transition: var(--tran-03);
+}
+.profile,.pro-name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.profile-box{
+    display: flex;
+    align-items: center;
+    padding-top: 3rem;
+    flex-direction: column;
+    width: 70%;
+    height: 60%;
+    background-color: var(--sidebar-color);
+    border-radius: 10px;
+    box-shadow: 0 .1rem .5rem var(--shadow-color);
+    transition: .5s ease;
+}
+.profile-box:hover{
+    box-shadow: 0 .1rem 2rem var(--shadow-color);
+    transform: scale(1.02);
+}
+.pro-name .username{
+    font-size: 3rem;
+    color: var(--text-color);
+    padding-top: 1rem;
+}
+.pro-name .examiner{
+    font-size: 2rem;
+    color: var(--text-color);
+}
+.profile-img img{
+    width: 10rem;
+    border-radius: 50%;
+}
+.update-profile-btns #up-pro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12rem;
+    height: 3rem;
+    border-radius: 6px;
+    background-color: #695cfe;
+    font-size: 1rem;
+    color: var(--sidebar-color);
+    font-weight: 500;
+    transition: var(--tran-03);
+}
+.update-profile-btns #log-out{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    height: 3rem;
+    border-radius: 6px;
+    background-color: rgb(214, 28, 28);
+    font-size: 1rem;
+    color: var(--sidebar-color);
+    font-weight: 500;
+    transition: var(--tran-03);
+}
+.update-profile-btns{
+    width: 30rem;
+    height: 10rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+#up-pro:hover{
+    background-color: #6f19d8;
+    transition: var(--tran-03);
+}
+#log-out:hover{
+    background-color: #9e1006;
+    transition: var(--tran-03);
+}
+#log-out i{
+    font-size: 1.3rem;
+    margin-right: 1rem;
+}
+#up-pro i{
+    font-size: 1.3rem;
+    margin-right: 1rem;
+}
+@media(max-width:1440px){
+    .sidebar{
+        width: 17rem;
+    }
+    .sidebar.close {
+        width: 6.8rem;
+    }
+    .header-text .name{
+        font-size: 1.2rem;
+    }
+    .header-text .profession{
+        font-size: 1rem;
+    }
+    .sidebar .text{
+        font-size: 1rem;
+    }
+    .sidebar .image{
+        min-width: 4rem;
+    }
+    .sidebar .image-text img{
+        width: 3rem;
+    }
+    .search-box input{
+        height: 80%;
+    }
+    .sidebar li .icon{
+        min-width: 4rem;
+        font-size: 1.6rem;
+        padding-left: 1.3rem;
+    }
+    .bottom-content{
+        bottom: 0;
+    }
+    .sidebar .menu-bar{
+        height: calc(100% - 20px);
+    }
+    .toggle-switch .switch{
+        height: 2rem;
+        width: 4rem;
+        display: flex;
+        justify-content: center;
+    }
+    .toggle-switch{
+        height: 4rem;
+        width: 5rem;
+        margin-right: -1rem;
+        border-radius: 6px;
+    }
+    .switch::before{
+        height: 1.2rem;
+        width: 1.2rem;
+        top: 50%;
+        left: 6px;
+    }
+    .menu-bar .mode .moon-sun{
+        height: 5rem;
+        width: 3.5rem;
+    }
+    section{
+        left: 17rem;
+        width: calc(100% - 17rem);
+    }
+    .sidebar.close ~ section{
+        left: 6.8rem;
+        width: calc(100% - 6.8rem);
+    }
+    .dash-content .boxes .box{
+        height: 17rem;
+    }
+    .box i{
+        font-size: 3rem;
+    }
+    .box .number{
+        font-size: 3rem;
+    }
+    .dashboard .text{
+        font-size: 2.2rem;
+        margin-left: -2rem;
+    }
+    .activity .title i{
+        font-size: 2.2rem;
+    }
+    .course .text{
+        font-size: 2.2rem;
+        margin-left: -2rem;
+    }
+    .course .activity .title i.bx.bx-edit{
+        font-size: 1rem;
+        color: red;
+    }
+    .activity-data .data{
+        margin-top: -1rem;
+    }
+    /* .course .activity{
+        position: absolute;
+    }
+    .course-datas{
+        top: 10%;
+        position:relative;
+        overflow-y: visible;
+        width: 100%;
+    } */
+    .exam .text{
+        font-size: 2.2rem;
+        margin-left: -2rem;
+    }
+    .available-exam .text{
+        font-size: 2.2rem;
+        margin-left: -2rem;
+    }
+    .student-result .text{
+        font-size: 2.2rem;
+        margin-left: -2rem;
+    }
+
 }
