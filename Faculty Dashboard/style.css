@@ -820,7 +820,7 @@ section{
     font-size: 1.3rem;
     margin-right: 1rem;
 }
-@media(max-width:1450px){
+@media(max-width:1550px){
     .sidebar{
         width: 17rem;
     }
