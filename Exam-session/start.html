@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" type="x-icon" href="logo-removebg-preview1.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable="no">
+    <title>Exam preparation</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", serif;
+    box-sizing: border-box;
+}
+body{
+    background-color:#e4e9f7;
+    display: flex;
+    justify-content: center;
+}
+.page-container{
+    margin-top: 4rem;
+    height: auto;
+    width: 50rem;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 .1rem .5rem rgba(0, 0, 0, .2);;
+    transition: .5s ease;
+}
+.page-container:hover{
+    box-shadow: 0 .1rem 2rem var(--shadow-color);
+    transform: scale(1.02);
+}
+.guidelines-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+.guidelines-container h1{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.exam-info {
+    margin-bottom: 20px;
+}
+
+.exam-info div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.instructions-container {
+    border-left: 2px solid #e5e5e5;
+    padding-left: 15px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.instructions-content {
+    max-height: 150px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    position: relative;
+}
+
+.instructions-content.expanded {
+    max-height: 1000px;
+}
+
+.fade-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(transparent, white);
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+}
+
+.instructions-content.expanded + .fade-overlay {
+    opacity: 0;
+}
+
+.show-more-btn {
+    display: block;
+    margin-top: 10px;
+    color: #2563eb;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-weight: 500;
+}
+
+.show-more-btn:hover {
+    color: #1d4ed8;
+}
+
+.instruction-item {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.instruction-item::before {
+    content: "»";
+    margin-right: 8px;
+    color: #666;
+}
+
+.section-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin: 15px 0;
+}
+
+/* New styles for start button and timer */
+.start-exam-container {
+    text-align: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.timer {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.start-btn {
+    background-color: #2563eb;
+    color: white;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.start-btn:hover:not(:disabled) {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.start-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.timer-warning {
+    color: #dc2626;
+    font-weight: 500;
+    margin-top: 10px;
+    display: none;
+}
+
+.timer-warning.visible {
+    display: block;
+}
+
+.checkbox-container {
+    margin: 15px 0;
+    text-align: left;
+    padding: 0 20px;
+}
+
+.agree-checkbox {
+    margin-right: 10px;
+}
+</style>
+</head>
+<body>
+<div class="page-container">
+<div class="guidelines-container">
+    <h1>Exam Guidelines</h1>
+    
+    <div class="exam-info">
+        <div><span>Name of the examination:</span><span>Mathematics</span></div>
+        <div><span>The subject code:</span><span>Math101</span></div>
+        <div><span>Name of the candidate:</span><span>Samrat Saha</span></div>
+        <div><span>Roll number of the candidate:</span><span>30901222131</span></div>
+        <div><span>Timings of the exam:</span><span>12:00 - 02:00</span></div>
+        <div><span>Duration of the exam:</span><span>2 Hours</span></div>
+        <div><span>Total marks of the exam:</span><span>100 Marks</span></div>
+    </div>
+
+    <div class="instructions-container">
+        <div class="section-title">Important Instructions</div>
+        <div class="instructions-content">
+            <div class="instruction-item">Arrange for stable Internet connectivity.</div>
+            <div class="instruction-item">Giving examination on Laptop or Desktop is highly recommended.</div>
+            <div class="instruction-item">Make sure mobile/laptop is fully charged. Power bank for mobile or UPS/Inverter for laptop/desktop should be arranged for uninterrupted power supply.</div>
+            <div class="instruction-item">Students should have sufficient data in Fair Usage Policy (FUP) / Internet plan with sufficient data pack of internet service provider.</div>
+            <div class="instruction-item">Login to the portal 10 min before the online examination start time.</div>
+            <div class="instruction-item">Close all browsers/tabs before starting the online examination.</div>
+            <div class="instruction-item">Once the exam starts, do not switch to any other window/tab. On doing so, your attempt may be considered as malpractice and your exam may get terminated.</div>
+            <div class="instruction-item">Do Not Pickup/Receive the Call during the exam if you are giving the exam on mobile.</div>
+            
+            <div class="section-title">Note</div>
+            <div class="instruction-item">It is recommended to use web browser such as Mozilla and Chrome browsers etc. on a desktop/laptop/tab/smart phone.</div>
+            <div class="instruction-item">Do not use the back button of keyboard or close button/icon to go back to previous page or to close the screen.</div>
+            <div class="instruction-item">Student will not allow to login after 30 min from the start of examination.</div>
+        </div>
+        <div class="fade-overlay"></div>
+        <button class="show-more-btn">Show More</button>
+    </div>
+
+    <div class="start-exam-container">
+        <div class="timer">Time until exam starts: <span id="countdown">10:00</span></div>
+        <div class="checkbox-container">
+            <input type="checkbox" id="agreeCheck" class="agree-checkbox">
+            <label for="agreeCheck">I have read and understood all the instructions</label>
+        </div>
+        <button class="start-btn" id="startBtn" disabled>Start Exam</button>
+        <div class="timer-warning" id="timerWarning">
+            You cannot start the exam after the 30-minute mark has passed
+        </div>
+    </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Instructions expand/collapse functionality
+    const content = document.querySelector('.instructions-content');
+    const button = document.querySelector('.show-more-btn');
+    const fadeOverlay = document.querySelector('.fade-overlay');
+
+    button.addEventListener('click', function() {
+        if (content.classList.contains('expanded')) {
+            content.classList.remove('expanded');
+            button.textContent = 'Show More';
+            content.parentElement.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            content.classList.add('expanded');
+            button.textContent = 'Show Less';
+        }
+    });
+
+    // Exam start functionality
+    const startBtn = document.getElementById('startBtn');
+    const agreeCheck = document.getElementById('agreeCheck');
+    const countdownEl = document.getElementById('countdown');
+    const timerWarning = document.getElementById('timerWarning');
+    
+    // Initial time: 10 minutes (in seconds)
+    let timeLeft = 600;
+    let examExpired = false;
+
+    // Enable/disable start button based on checkbox
+    agreeCheck.addEventListener('change', function() {
+        startBtn.disabled = !this.checked || examExpired;
+    });
+
+    // Start button click handler
+    startBtn.addEventListener('click', () => {
+    if (!examExpired) {
+        // Confirm with the user
+        if (confirm("Are you ready to start the exam? You won't be able to review previous questions after starting.")) {
+            // User confirmed, proceed to the exam page
+            window.location.href = 'index.html';
+        } else {
+            // User canceled, stay on the current page
+            // You might want to display a message or take other actions here
+            alert("Exam start canceled.");
+        }
+    }
+});
+
+    // Countdown timer
+    function updateTimer() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        countdownEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+        if (timeLeft <= 0) {
+            examExpired = true;
+            startBtn.disabled = true;
+            timerWarning.classList.add('visible');
+            return;
+        }
+
+        timeLeft--;
+        setTimeout(updateTimer, 1000);
+    }
+
+    // Start the countdown
+    updateTimer();
+});
+</script>
+
+</body>
+</html>
