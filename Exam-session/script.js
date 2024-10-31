@@ -58,6 +58,7 @@ let timeLeft = 30 * 60; // 30 minutes in seconds
             } else {
                 clearInterval(timerInterval);
                 alert('Time is up!');
+                window.location.href = 'start.html';
             }
         }
 
@@ -213,32 +214,30 @@ let timeLeft = 30 * 60; // 30 minutes in seconds
         function updateQuestionLanguage() {
             const languageSelect = document.querySelector('.language-select');
             const questionContainers = document.querySelectorAll('.question-container');
-          
+        
             questionContainers.forEach((container, index) => {
-              const questionText = container.querySelector('#question-text');
-              const optionElements = container.querySelectorAll('.options .ans input[type="radio"] + label');
-          
+            const questionText = container.querySelector('#question-text');
+            const optionElements = container.querySelectorAll('.options .ans input[type="radio"] + label');
               // Translate the question text
-              translateText(questions[index].text, languageSelect.value)
+            translateText(questions[index].text, languageSelect.value)
                 .then(translatedText => {
-                  questionText.textContent = translatedText;
+                questionText.textContent = translatedText;
                 });
-          
               // Translate the options
-              questions[index].options.forEach((option, optionIndex) => {
+            questions[index].options.forEach((option, optionIndex) => {
                 translateText(option, languageSelect.value)
-                  .then(translatedOption => {
+                .then(translatedOption => {
                     optionElements[optionIndex].textContent = translatedOption;
-                  });
-              });
+                });
             });
-          }
-          
-          function translateText(text, target) {
+            });
+        }
+        
+        function translateText(text, target) {
             return fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${target}&dt=t&q=${encodeURIComponent(text)}`)
-              .then(response => response.json())
-              .then(data => data[0][0][0]);
-          }
-          
-          const languageSelect = document.querySelector('.language-select');
-          languageSelect.addEventListener('change', updateQuestionLanguage);
+            .then(response => response.json())
+            .then(data => data[0][0][0]);
+        }
+        
+        const languageSelect = document.querySelector('.language-select');
+        languageSelect.addEventListener('change', updateQuestionLanguage);
