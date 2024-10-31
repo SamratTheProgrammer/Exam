@@ -89,8 +89,13 @@ body{
     font-size: 2rem;
     position: absolute;
     transition: opacity 0.3s ease;
+    transition: 0.3s ease;
 }
-
+#theme-toggle i:hover{
+    color: var(--text-color2);
+    transform: rotate(15deg);
+    transition: 0.3s ease;
+}
 /* Light mode (default) */
 #theme-toggle .bi-moon {
     opacity: 1;
