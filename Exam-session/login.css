@@ -1,0 +1,66 @@
+.bg-logout{
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff8f;
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    margin: -2rem;
+}
+.logout-box{
+    justify-self: center;
+    align-self: center;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    height: 13rem;
+    width: 25rem;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    align-items: center;
+    transition: 0.5s ease;
+    box-shadow: 0 .1rem .5rem var(--shadow-color);
+}
+.logout-box.show {
+    display: flex; 
+    opacity: 1; 
+    transition: 0.5s ease;
+}
+.bg-logout.modal-background{
+    display: flex;
+}
+.logout-box:hover{
+    transition: 0.5s ease;
+    transform: scale(1.02);
+    box-shadow: 0 .1rem 2rem var(--shadow-color);
+}
+.logout-box h4{
+    font-size: 1.3rem;
+    margin: 1rem;
+    padding-left: 1rem;
+    color: var(--text-color);
+}
+.logout{
+    background: #20ad0e; color: white; font-weight: 500; margin-right: 3rem;transition: 0.4s ease;
+}
+.confirm:hover{
+    background: #147707; color: white; transition: 0.4s ease;
+}
+.close{
+    background: #e40f00; color: white; font-weight: 500;transition: 0.4s ease;
+}
+.close:hover{
+    background: #b30f04; color: white; transition: 0.4s ease;
+}
+.submit-warn-btn{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-left: 2.5rem;
+}
+.submit-warn-btn i{
+    padding-right:1rem ;
+}
