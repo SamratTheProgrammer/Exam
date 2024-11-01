@@ -210,6 +210,24 @@ let timeLeft = 30 * 60; // 30 minutes in seconds
             alert('Your paper submission was successful!');
             window.location.href = 'start.html';
         });
+        // Logout Warning PopUp
+const logout = document.querySelector('.bg-logout');
+const container = document.querySelector('.logout-box');
+const logoutBtn = document.getElementById('logout-pop_up');
+const cancleBtn = document.querySelector('.cancle');
+
+logoutBtn.onclick = function() {
+    container.classList.add('show');
+    logout.classList.add('logout-background');
+}
+cancleBtn.onclick = function() {
+    container.classList.remove('show');
+    logout.classList.remove('logout-background');
+}
+document.getElementById('logout').addEventListener('click', () => {
+    alert('Your logout was successful!');
+    window.location.href = 'start.html';
+});
         //Language change
         function updateQuestionLanguage() {
             const languageSelect = document.querySelector('.language-select');

@@ -16,15 +16,24 @@
             <img src="logo.png" alt="" class="logo-img">
             <h4 class="header-text">Online Examination System</h4>
         </div>
-            <div class="logout">
+            <div class="logout-main">
                 <button id="theme-toggle">
                     <i class="bi bi-moon"></i>
                     <i class="bi bi-brightness-high"></i>
                 </button>
-                <a href="start.html"><i class='bx bx-log-out'></i></a>
+                <a href="#" id="logout-pop_up"><i class='bx bx-log-out'></i></a>
             </div>
         </nav>
     </header>
+    <div class="bg-logout">
+        <div class="logout-box">
+            <h4>Are you want to logout?</h4>
+            <div class="logout-warn-btn">
+                <button class="nav-btn-logout cancle" id="cancle"><i class="bi bi-x-circle"></i>Cancle</button>
+                <button class="nav-btn-logout logout" id="logout"><i class='bx bx-log-out'></i>Logout</button>
+            </div>
+        </div>
+    </div>
     <section class="exam-screen">
         <div class="left-panel">
             <div class="exam-header">
