@@ -46,21 +46,25 @@ function hideInfo() {
 }
 // Timer functionality
 let timeLeft = 30 * 60; // 30 minutes in seconds
-        const timerDisplay = document.querySelector('.timer');
+const timerDisplay = document.querySelector('.timer');
 
-        function updateTimer() {
-            const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
-            timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-            if (timeLeft > 0) {
-                timeLeft--;
-            } else {
-                clearInterval(timerInterval);
-                alert('Time is up!');
-                window.location.href = 'start.html';
-            }
-        }
+function formatTime(timeInSeconds) {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function updateTimer() {
+    timerDisplay.textContent = formatTime(timeLeft);
+    
+    if (timeLeft > 0) {
+        timeLeft--;
+    } else {
+        clearInterval(timerInterval);
+        alert('Time is up!');
+        window.location.href = 'start.html';
+    }
+}
 
         const timerInterval = setInterval(updateTimer, 1000);
         // Select the refresh icon
@@ -680,11 +684,11 @@ let isOpen = true;
     }
 
     function getResponseForQuery(query) {
-        if (query.includes('time') || query.includes('duration')) {
-            return 'Your remaining time is 29:10 minutes. The timer is displayed at the top of your screen.';
-        }
+      if (query.includes('time') || query.includes('duration')) {
+        return `Your remaining time is ${formatTime(timeLeft)} minutes. The timer is displayed at the top of your screen.`;
+      }
         if (query.includes('mark') || query.includes('marks')) {
-            return 'Each question carries 2 marks. There is negative marking in this exam.';
+            return 'Each question carries 2 marks. There is negative marking in this exam. Total marks of exam is 100.';
         }
         if (query.includes('language')) {
             return 'You can switch between English, Bengali, and Hindi using the language dropdown at the top.';
