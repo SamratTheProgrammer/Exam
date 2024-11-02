@@ -45,7 +45,7 @@
                         <h4 class="name">Name: <span>Samrat Saha</span></h4>
                         <p class="roll">Roll: <span>30901222131</span></p>
                         <p class="roll">Reg no: <span>123456789</span></p>
-                        <p class="email">Email: <span>samratsaha@gmail.com</span></p>
+                        <p class="email">Email: <span>samratsahaonline@gmail.com</span></p>
                     </div>
                     <div class="exam-info">
                         <h2>Mathematics Final Exam</h2>
@@ -121,7 +121,7 @@ Total questions: 25</pre>
                     <span>Not Attempted</span>
                 </div>
             </div>
-            <div class="chatbox">
+            <!-- <div class="chatbox">
                 <div class="chathead">
                     <i class='bx bx-left-arrow-alt'></i>
                     <h5>Llama 3.1 AI</h5>
@@ -129,6 +129,28 @@ Total questions: 25</pre>
                 <div class="chat-body">
                 <input type="text" placeholder="Ask your questions!" class="chattype" id="chating">
                 <button type="submit" id="chatsend"><i class='bx bx-up-arrow-alt'></i></button>
+            </div>
+        </div> -->
+        <div class="chatbox">
+            <div class="chathead">
+                <i class='bx bx-left-arrow-alt' onclick="toggleChat()"></i>
+                <h5>Exam Assistance</h5>
+            </div>
+            <div class="chat-body">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages will appear here -->
+                </div>
+                <div class="chat-suggestions">
+                    <button class="suggestion-chip" onclick="askQuestion('time remaining')">Time Left</button>
+                    <button class="suggestion-chip" onclick="askQuestion('marking scheme')">Marks</button>
+                    <button class="suggestion-chip" onclick="askQuestion('language')">Language</button>
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="Ask your questions!" class="chattype" id="chating">
+                    <button type="submit" id="chatsend" onclick="sendMessage()">
+                        <i class='bx bx-up-arrow-alt'></i>
+                    </button>
+                </div>
             </div>
         </div>
             <button type="submit" class="submit-exam nav-btn"  id="pop_up">Submit Exam</button>

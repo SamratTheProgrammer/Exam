@@ -178,6 +178,11 @@ section{
     line-height: 2rem;
     cursor: pointer;
     margin-top: 2rem;
+    transition: 0.4s;
+}
+.info-button:hover{
+    transform: scale(1.04);
+    transition: 0.4s;
 }
 .info-button span{
     font-size: 1.1rem;
