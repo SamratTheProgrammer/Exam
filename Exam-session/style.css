@@ -341,7 +341,8 @@ body{
 .navigation-buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    position: relative;
+    top: 7%;
 }
 .nav-btn {
     padding: 10px 20px;

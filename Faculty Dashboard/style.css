@@ -20,7 +20,9 @@
     --box-text-color:#000;
     --hover-color:#dddd;
     --border-color:#dddd;
-
+    --showmore-color:#cccaca91;
+    
+    
     --tran-02: all 0.2s ease;
     --tran-03: all 0.3s ease;
     --tran-04: all 0.4s ease;
@@ -41,6 +43,7 @@ body.dark{
     --shadow-color: rgba(0, 0, 0, .9);
     --hover-color:#3a3b3c;
     --border-color:#3a3b3c;
+    --showmore-color:#222222c0;
 }
 .sidebar{
     position: fixed;
@@ -329,26 +332,157 @@ section{
     width: 100%;
     align-items: center;
 }
-.activity .activity-data{
+.activity-container {
+    position: relative;
+    background: transparent;
+    color: var(--text-color);
+    
+}
+
+.activity-content {
+    position: relative;
+    max-height: 310px;
+    overflow-y: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+/* Add table wrapper for scrolling */
+.table-wrapper {
+    overflow-y: auto;
+    max-height: inherit;
+}
+
+.activity-content.expanded {
+    max-height: 600px;
+}
+
+.fade-overlay {
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to top, var(--showmore-color) 0%, rgba(26, 26, 26, 0) 100%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.fade-overlay.hidden {
+    opacity: 0;
+}
+
+/* Custom scrollbar styles */
+.table-wrapper::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: #2d2d2d6e;
+    border-radius: 4px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #4a4a4a57;
+    border-radius: 4px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #5a5a5a5e;
+}
+
+.activity-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.activity-table thead {
+    position: sticky;
+    top: -1%;
+    background: var(--body-color);
+    z-index: 2;
+    box-shadow: 0 .1rem 1rem var(--shadow-color);
+    transition: var(--tran-05);
+}
+.activity-table thead tr th{
     padding-left: 2rem;
-    display: flex;
 }
-.activity-data .data{
-    display: flex;
-    flex-direction: column;
-    margin: 0 1.5rem;
+.activity-table tbody tr td{
+    padding-left: 2rem;
 }
-.activity-data .data-titles{
-    font-size: 1.4rem;
-    font-weight: 500;
+.activity-table th {
+    text-align: left;
+    padding: 12px;
+    color: #9ca3af;
+    border-bottom: 1px solid #374151;
     color: var(--text-color);
 }
-.activity-data .data .data-list{
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin-top: 1.5rem;
-    white-space: nowrap;
-    color: var(--text-color);
+
+.activity-table td {
+    padding: 12px;
+    border-bottom: 1px solid #374151;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.badge-new {
+    background-color: #064e3b;
+    color: #6ee7b7;
+}
+
+.badge-old {
+    background-color: #1f2937;
+    color: #9ca3af;
+}
+
+.badge-active {
+    background-color: #1e3a8a;
+    color: #93c5fd;
+}
+
+.badge-offline {
+    background-color: #1f2937;
+    color: #9ca3af;
+}
+
+.show-more-btn1 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 8px;
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    font-size: 14px;
+    z-index: 2;
+}
+
+.show-more-btn1:hover {
+    color: #fff;
+}
+
+.btn-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chevron-icon {
+    transition: transform 0.3s ease;
+}
+
+.chevron-icon.expanded {
+    transform: rotate(180deg);
 }
 .course .text{
     font-size: 3rem;
@@ -364,138 +498,198 @@ section{
 .course .title{
     padding: 2rem;
 }
-.add-course{
+/* Second scroll */
+.add-course-form {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: var(--sidebar-color);
+    border-radius: 8px;
+    margin: 1rem;
+}
+.form-group {
+    margin-bottom: 1rem;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 20rem;
+    gap: 1rem;
 }
-.course-input ,.course-textarea{
-    width: 90%;
-}
-.add-course input,textarea,button{
-    outline: none;
+
+.input-sec, select {
+    padding: 0.5rem;
     border: none;
-    border-radius: 6px;
-}
-.add-course #c_name,textarea{
-    height: 3rem;
-    width: 85%;
-    padding-left: 2rem;
-    font-size: 1rem;
-    background-color: var(--sidebar-color);
+    outline: none;
+    border-radius: 4px;
+    flex: 1;
+    background-color: var(--body-color);
     color: var(--text-color);
-}
-.add-course #c_id{
-    height: 3rem;
-    width: 12%;
-    padding-left: 2rem;
     font-size: 1rem;
-    background-color: var(--sidebar-color);
-    color: var(--text-color);
 }
-.add-course textarea{
-    padding-top: 1rem;
-    resize: none;
-    height: 12rem;
-    width: 97.4%;
-}
-.course-input{
-    padding-bottom: 1rem;
-}
-.add-course #add_btn{
-    height: 3rem;
-    width: 10rem;
-    font-size: 1rem;
-    background-color: #754ef9;
-    font-weight: 500;
-    color: #f6f5ff;
-    transition: var(--tran-04);
-}
-.add-course #add_btn i{
-    font-size: 1rem;
-    padding-right: 0.5rem;
-    font-weight: 500;
-    color: #f6f5ff;
-}
-.add-course .btn{
-    padding-top: 2rem;
+
+.add-course {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+    background-color: #695cfe;
+    color: white;
+    transition: var(--tran-03);
+}
+
+.add-course:hover {
+    background-color: #4136b6;
+    transition: var(--tran-03);
+}
+.add{
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #695cfe;
+    color: white;
+    transition: var(--tran-03);
+}
+
+.add:hover {
+    background-color: #4136b6;
+    transition: var(--tran-03);
+}
+/* Main container */
+.course-container {
+    height: calc(100vh - 220px); /* Adjusted to account for form height */
+    margin: 1rem;
+}
+.course-datas {
+    height: 100%;
+    border: 2px solid var(--sidebar-color);
+    border-radius: 8px;
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
 }
-.add-course #add_btn:hover{
-    background-color: #6f19d8;
-    transition: var(--tran-04);
+.scrollable-content {
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
 }
-.course-heading{
-    display: flex;
-    justify-content: space-around;
-    padding: 0rem 2rem;
-    width: 100%;
-    height: 3rem;
-}
-.data-type{
-    font-size: 1.4rem;
-    color: var(--text-color);
-}
-.course .title2{
-    margin-bottom: -1rem;
-    margin-top: -1rem;
-}
-.course-details{
-    display: flex;
-    justify-content: space-around;
-    border:2px solid var(--border-color);
-    border-radius: 6px;
+.course-heading {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 0.5fr 0.5fr 0.5fr;
     background-color: var(--sidebar-color);
-    width: 97%;
-    height: 3rem;
+    padding: 1rem;
+    font-weight: bold;
+    border-bottom: 2px solid var(--sidebar-color);
+    box-shadow: 0 .1rem 1rem var(--shadow-color);
+}
+#courseList {
+    overflow-y: auto;
+}
+.course-details {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 0.5fr 0.5fr 0.5fr;
+    padding: 1rem;
+    border-bottom: 2px solid var(--sidebar-color);
     align-items: center;
-    margin-left: 1rem;
-    margin-top: 1rem;
 }
-.course-heading .type{
-    margin-right: -2rem;
+.data-type {
+    font-weight: bold;
 }
-.available-exam .course-heading .type{
-    margin-left: 2rem;
+
+.update {
+    display: flex;
+    gap: 0.5rem;
 }
-.course-details:hover{
-    background-color: var(--hover-color);
-    transition: var(--tran-04);
-}
-.course-details .edit,.remove{
+
+.edit {
+    background-color: #28a745;
     font-size: 1.2rem;
     border-radius: 50%;
-    height: 2rem;
-    width: 2rem;
-    color: #242526;
-    transition: var(--tran-03);
+    height: 3rem;
+    width: 3rem;
 }
-.course-details .edit{
-    background-color: rgb(13, 175, 13);
-}
-.course-details .remove{
-    background-color: red;
-}
-.course-details .edit:hover{
-    background-color: rgb(27, 151, 27);
-    transition: var(--tran-03);
-}
-.course-details .remove:hover{
-    background-color: rgb(167, 12, 12);
-    transition: var(--tran-03);
-}
-.course-data{
+
+.remove {
+    background-color: #dc3545;
     font-size: 1.2rem;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+}
+
+.edit:hover {
+    background-color: #218838;
+}
+
+.remove:hover {
+    background-color: #c82333;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: var(--sidebar-color);
+    padding: 2rem;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+}
+.modal-content h2{
     color: var(--text-color);
 }
-.edit{
-    margin-right: 2rem;
+.show-more-container {
+    position: sticky;
+    bottom: 0;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    height: 10rem;
+    background: linear-gradient(to top, var(--showmore-color) 0%, rgba(26, 26, 26, 0) 100%);
 }
+#courseCount{
+    margin-top: 2rem;
+}
+.show-more-btn {
+    background-color: #6c757d;
+    color: white;
+    padding: 0.5rem 2rem;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+    margin-bottom: -1.5rem;
+} 
+.show-more-btn:hover {
+    background-color: #5a6268;
+}
+
+.hidden {
+    display: none;
+}
+.scrollable-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+/* Second scroll End*/
+
 .exam .text{
     font-size: 3rem;
     font-weight: 500;
@@ -509,6 +703,47 @@ section{
 }
 .exam .title{
     padding: 2rem;
+}
+.exam-question .option-group {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.add-option-btn {
+    background: none;
+    border: none;
+    color: #695cfe;
+    cursor: pointer;
+    font-size: 2.5rem;
+    position: absolute;
+    font-weight: 500;
+    right: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s ease;
+}
+.add-option-btn:hover{
+    color: #4c0f97;
+    transition: 0.3s ease;
+}
+.delete-option-btn {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 2.5rem;
+    position: absolute;
+    right: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s ease;
+}
+.delete-option-btn:hover{
+    transition: 0.3s ease;
+    color: #a71606;
+}
+.hidden {
+    display: none;
 }
 .add-exam{
     display: flex;
@@ -525,8 +760,25 @@ section{
 .exam-question{
     width: 90%;
 }
+.exam-question textarea{
+    padding-left: 2rem;
+    color: var(--text-color);
+    font-size: 1rem;
+}
 .exam-question #options{
     margin-top: 1rem;
+    color: var(--text-color);
+}
+.answer{
+    width: 90%;
+}
+.answer #answer{
+    padding-left: 2rem;
+    height: 3rem;
+    width: 97.5%;
+    font-size: 1rem;
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
 }
 .btn i{
     padding-right: 1rem;
@@ -555,12 +807,13 @@ section{
     background-color: var(--sidebar-color);
     color: var(--text-color);
 }
-.add-exam #options{
+.option-input{
     padding-left: 2rem;
     height: 3rem;
     width: 97.5%;
     font-size: 1rem;
     background-color: var(--sidebar-color);
+    color: var(--text-color);
 }
 .add-exam textarea{
     padding-top: 2.2rem;
@@ -604,7 +857,7 @@ section{
 }
 .add-exam #add_qs{
     height: 3rem;
-    width: 14rem;
+    width: 15rem;
     font-size: 1rem;
     background-color: #754ef9;
     font-weight: 500;
@@ -631,7 +884,7 @@ section{
     cursor: pointer;
 }
 .add-exam #add_btn:hover,#add_qs:hover,#add_dlt:hover,#previous:hover,#next:hover{
-    background-color: #6f19d8;
+    background-color: #4c0f97;
     transition: var(--tran-04);
 }
 .available-exam .text{
@@ -639,6 +892,145 @@ section{
     font-weight: 500;
     color: var(--text-color);
     padding: 1rem 4rem;
+}
+/* Container for the entire exam section */
+.exam-container {
+    height: calc(100vh - 220px);
+    margin: 1rem;
+    position: relative;
+}
+
+/* Main table wrapper */
+.exam-table-wrapper {
+    height: 100%;
+    border: 2px solid var(--sidebar-color);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Header styling */
+thead {
+    background-color: var(--sidebar-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 .1rem 1rem var(--shadow-color);
+}
+
+thead th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+/* Scrollable body */
+.table-body-wrapper {
+    height: calc(100% - 56px); /* Subtract header height */
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Table body styling */
+tbody td {
+    padding: 1rem;
+    border-bottom: 2px solid var(--sidebar-color);
+    color: var(--text-color);
+}
+
+/* Update buttons container */
+.update {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Edit and remove buttons */
+.edit {
+    background-color: #28a745;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove {
+    background-color: #dc3545;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Button hover states */
+.edit:hover {
+    background-color: #218838;
+}
+
+.remove:hover {
+    background-color: #c82333;
+}
+
+/* Custom scrollbar */
+.table-body-wrapper::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-body-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-body-wrapper::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.table-body-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Column widths */
+.id-column {
+    width: 8%;
+}
+
+.subject-column {
+    width: 20%;
+}
+
+.date-column {
+    width: 15%;
+}
+
+.timing-column {
+    width: 20%;
+}
+
+.actions-column {
+    width: 20%;
+}
+
+.examinee-column {
+    width: 17%;
 }
 .student-result .text{
     font-size: 3rem;
@@ -684,9 +1076,10 @@ section{
     color: #f6f5ff;
     font-size: 1rem;
     transition: var(--tran-03);
+    cursor: pointer;
 }
 #src:hover{
-    background-color: #6f19d8;
+    background-color: #4c0f97;
     transition: var(--tran-03);
 }
 .std-details{
@@ -728,12 +1121,13 @@ section{
     color: #f6f5ff;
     font-size: 1rem;
     transition: var(--tran-03);
+    cursor: pointer;
 }
 .certificate-btn i{
     padding-left: 1rem;
 }
 .certificate-btn:hover{
-    background-color: #6f19d8;
+    background-color: #4c0f97;
     transition: var(--tran-03);
 }
 .profile,.pro-name{
@@ -782,6 +1176,7 @@ section{
     font-size: 1rem;
     color: var(--sidebar-color);
     font-weight: 500;
+    cursor: pointer;
     transition: var(--tran-03);
 }
 .update-profile-btns #log-out{
@@ -796,6 +1191,7 @@ section{
     color: var(--sidebar-color);
     font-weight: 500;
     transition: var(--tran-03);
+    cursor: pointer;
 }
 .update-profile-btns{
     width: 30rem;
@@ -805,7 +1201,7 @@ section{
     justify-content: space-around;
 }
 #up-pro:hover{
-    background-color: #6f19d8;
+    background-color: #4c0f97;
     transition: var(--tran-03);
 }
 #log-out:hover{
@@ -917,22 +1313,6 @@ section{
         font-size: 2.2rem;
         margin-left: -2rem;
     }
-    .course .activity .title i.bx.bx-edit{
-        font-size: 1rem;
-        color: red;
-    }
-    .activity-data .data{
-        margin-top: -1rem;
-    }
-    /* .course .activity{
-        position: absolute;
-    }
-    .course-datas{
-        top: 10%;
-        position:relative;
-        overflow-y: visible;
-        width: 100%;
-    } */
     .exam .text{
         font-size: 2.2rem;
         margin-left: -2rem;
