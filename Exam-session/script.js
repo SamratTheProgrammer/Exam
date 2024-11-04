@@ -704,3 +704,249 @@ let isOpen = true;
         }
         return "I can help you with questions about time remaining, marking scheme, language options, or navigation. What would you like to know?";
     }
+
+
+
+
+    // Function to handle fullscreen
+function enableExamMode() {
+  const elem = document.documentElement;
+  
+  // Request fullscreen using various browser prefixes
+  if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+  }
+
+  // Disable context menu (right click)
+  document.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      return false;
+  });
+
+  // Handle keyboard events
+  document.addEventListener('keydown', (e) => {
+      // Get the currently focused element
+      const focusedElement = document.activeElement;
+      
+      // Check if the focused element is the exam assistant input
+      const isExamAssistantInput = focusedElement?.getAttribute('id') === 'chating' || 
+                                 focusedElement?.closest('.chatbox');
+
+      // If not typing in exam assistant, prevent all keyboard input
+      if (!isExamAssistantInput) {
+          e.preventDefault();
+          return false;
+      }
+      
+      // When in exam assistant, still block dangerous combinations
+      if (isExamAssistantInput) {
+          // Block browser shortcuts
+          if (e.ctrlKey || e.altKey || e.metaKey) {
+              e.preventDefault();
+              return false;
+          }
+          
+          // Block function keys
+          if (e.key.startsWith('F') && !isNaN(e.key.slice(1))) {
+              e.preventDefault();
+              return false;
+          }
+      }
+  });
+
+  // Prevent exiting fullscreen
+  document.addEventListener('fullscreenchange', handleFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+  document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+  document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+}
+
+// Handle fullscreen change attempts
+function handleFullscreenChange() {
+  if (!document.fullscreenElement && 
+      !document.webkitFullscreenElement && 
+      !document.mozFullScreenElement && 
+      !document.msFullscreenElement) {
+      enableExamMode(); // Re-enable fullscreen if user tries to exit
+  }
+}
+
+// Function to disable exam mode after submission
+function disableExamMode() {
+  // Remove all event listeners
+  document.removeEventListener('contextmenu', (e) => e.preventDefault());
+  document.removeEventListener('keydown', (e) => e.preventDefault());
+  document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+  document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+  document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+
+  // Exit fullscreen
+  if (document.exitFullscreen) {
+      document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+  }
+}
+
+// Initialize exam mode when page loads
+document.addEventListener('DOMContentLoaded', () => {
+  enableExamMode();
+
+  // Add event listener to the submit button
+  const submitButton = document.querySelector('#pop_up'); // Adjust selector as needed
+  if (submitButton) {
+      submitButton.addEventListener('click', disableExamMode);
+  }
+});
+
+// Question tracking state
+const examState = {
+  totalQuestions: 25,
+  currentQuestion: 1,
+  questions: {},
+  stats: {
+      attempted: 0,
+      notAttempted: 25,
+      markedForReview: 0
+  }
+};
+
+// Initialize question states
+function initializeExam() {
+  for (let i = 1; i <= examState.totalQuestions; i++) {
+      examState.questions[i] = {
+          status: 'notAttempted',
+          selectedOption: null,
+          isMarkedForReview: false
+      };
+  }
+  updateQuestionMap();
+  updateStatistics();
+}
+// Handle answer selection
+function handleAnswerSelect(questionNumber, optionIndex) {
+  const question = examState.questions[questionNumber];
+  
+  // If this question wasn't previously attempted
+  if (question.status !== 'attempted') {
+      examState.stats.attempted++;
+      examState.stats.notAttempted--;
+  }
+  
+  // Update question state
+  question.status = 'attempted';
+  question.selectedOption = optionIndex;
+  
+  // If it was marked for review, unmark it
+  if (question.isMarkedForReview) {
+      question.isMarkedForReview = false;
+      examState.stats.markedForReview--;
+  }
+  
+  updateQuestionMap();
+  updateStatistics();
+}
+
+// Add these variables at the top of your script.js
+const examConfig = {
+  totalQuestions: questions.length,
+  maxAttempts: 3,
+  currentAttempt: 1,
+  timePerAttempt: 30 * 60, // 30 minutes in seconds
+};
+
+// Update the info tooltip HTML content dynamically
+function updateInfoTooltip() {
+  const attemptsRemaining = examConfig.maxAttempts - examConfig.currentAttempt + 1;
+  const answeredQuestions = document.querySelectorAll('.question-number.answered').length;
+  const markedQuestions = document.querySelectorAll('.question-number.marked').length;
+  
+  const tooltipContent = `
+      <div class="info-content">
+          <p><strong>Total Questions:</strong> ${examConfig.totalQuestions}</p>
+          <p><strong>Answered:</strong> ${answeredQuestions}</p>
+          <p><strong>Marked for Review:</strong> ${markedQuestions}</p>
+          <p><strong>Attempts Remaining:</strong> ${attemptsRemaining}</p>
+          <p><strong>Current Attempt:</strong> ${examConfig.currentAttempt} of ${examConfig.maxAttempts}</p>
+      </div>
+  `;
+  
+  document.querySelector('.info-tooltip').innerHTML = tooltipContent;
+}
+
+// Modify the existing showInfo function
+function showInfo() {
+  updateInfoTooltip(); // Update content before showing
+  document.querySelector('.info-tooltip').style.display = 'block';
+}
+
+// Update the timer display to include attempt information
+function updateTimer() {
+  const timerDisplay = document.querySelector('.timer');
+  timerDisplay.textContent = formatTime(timeLeft);
+  
+  if (timeLeft > 0) {
+      timeLeft--;
+  } else {
+      clearInterval(timerInterval);
+      if (examConfig.currentAttempt < examConfig.maxAttempts) {
+          examConfig.currentAttempt++;
+          timeLeft = examConfig.timePerAttempt;
+          resetExam();
+      } else {
+          alert('All attempts completed! Redirecting to start page.');
+          window.location.href = 'start.html';
+      }
+  }
+}
+
+// Add function to reset exam state between attempts
+function resetExam() {
+  // Clear all answers
+  document.querySelectorAll('.question-container .options input[type="radio"]').forEach(radio => {
+      radio.checked = false;
+  });
+  
+  // Reset question status indicators
+  document.querySelectorAll('.question-number').forEach(num => {
+      num.classList.remove('answered', 'marked', 'visited');
+  });
+  
+  // Reset to first question
+  currentQuestionIndex = 0;
+  renderQuestion(currentQuestionIndex);
+  
+  // Update attempt information
+  alert(`Starting attempt ${examConfig.currentAttempt} of ${examConfig.maxAttempts}`);
+}
+
+// Update submit button handler
+document.getElementById('confirm').addEventListener('click', () => {
+  const attemptsRemaining = examConfig.maxAttempts - examConfig.currentAttempt;
+  if (attemptsRemaining > 0) {
+      examConfig.currentAttempt++;
+      timeLeft = examConfig.timePerAttempt;
+      resetExam();
+  } else {
+      alert('Final attempt completed! Redirecting to start page.');
+      window.location.href = 'start.html';
+  }
+});
+
+// Add these event listeners to update info when questions are answered or marked
+document.addEventListener('change', (e) => {
+  if (e.target.type === 'radio') {
+      updateInfoTooltip();
+  }
+});
+
+document.querySelector('.mark-btn').addEventListener('click', () => {
+  updateInfoTooltip();
+});
