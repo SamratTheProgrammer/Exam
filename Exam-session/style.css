@@ -740,7 +740,7 @@ font-size: 1.2rem;
     position: relative;
 }
 
-@media(max-width:1570px){
+@media(max-width:1600px){
     .exam-info h2{
         font-size: 1.5rem;
     }
