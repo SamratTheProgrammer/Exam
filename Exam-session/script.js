@@ -626,86 +626,6 @@ languageSelect.addEventListener('change', updateQuestionLanguage);
 
 // Optional: Initial translation when page loads
 document.addEventListener('DOMContentLoaded', updateQuestionLanguage);
-
-
-// ChatBot
-
-let isOpen = true;
-
-    function toggleChat() {
-        const chatBody = document.querySelector('.chat-body');
-        isOpen = !isOpen;
-        chatBody.style.display = isOpen ? 'flex' : 'none';
-    }
-
-    // Initialize chat with welcome message
-    window.onload = function() {
-        addMessage("Hi! I'm your exam assistant. How can I help you today?", 'bot');
-        addMessage("You can ask me about exam duration, marking scheme, or language options.", 'bot');
-    }
-
-    function addMessage(text, sender) {
-        const messagesDiv = document.getElementById('chatMessages');
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${sender}-message`;
-        messageDiv.textContent = text;
-        messagesDiv.appendChild(messageDiv);
-        messagesDiv.scrollTop = messagesDiv.scrollHeight;
-    }
-
-    function sendMessage() {
-        const input = document.getElementById('chating');
-        const message = input.value.trim();
-        
-        if (message) {
-            addMessage(message, 'user');
-            generateResponse(message);
-            input.value = '';
-        }
-    }
-
-    // Handle Enter key
-    document.getElementById('chating').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            sendMessage();
-        }
-    });
-
-    function askQuestion(topic) {
-        addMessage(topic, 'user');
-        generateResponse(topic);
-    }
-
-    function generateResponse(query) {
-        setTimeout(() => {
-            const response = getResponseForQuery(query.toLowerCase());
-            addMessage(response, 'bot');
-        }, 500);
-    }
-
-    function getResponseForQuery(query) {
-      if (query.includes('time') || query.includes('duration')) {
-        return `Your remaining time is ${formatTime(timeLeft)} minutes. The timer is displayed at the top of your screen.`;
-      }
-        if (query.includes('mark') || query.includes('marks')) {
-            return 'Each question carries 2 marks. There is negative marking in this exam. Total marks of exam is 100.';
-        }
-        if (query.includes('language')) {
-            return 'You can switch between English, Bengali, and Hindi using the language dropdown at the top.';
-        }
-        if (query.includes('review')) {
-            return 'Use the "Mark for Review" button below the question. Reviewed questions appear in red in the question palette.';
-        }
-        if (query.includes('next') || query.includes('previous')) {
-            return 'Use the Next and Previous buttons below the question, or click question numbers in the palette on the right.';
-        }
-        if (query.includes('submit')) {
-            return 'Click the "Submit Exam" button at the bottom right when you\'re ready to submit. Make sure to review all questions first.';
-        }
-        return "I can help you with questions about time remaining, marking scheme, language options, or navigation. What would you like to know?";
-    }
-
-
 // Question tracking state
 const examState = {
   totalQuestions: 25,
@@ -852,6 +772,86 @@ document.querySelector('.mark-btn').addEventListener('click', () => {
 });
 
 
+
+// ChatBot
+
+let isOpen = true;
+
+function toggleChat() {
+    const chatBody = document.querySelector('.chat-body');
+    isOpen = !isOpen;
+    chatBody.style.display = isOpen ? 'flex' : 'none';
+}
+
+// Initialize chat with welcome message
+window.onload = function() {
+    addMessage("Hi! I'm your exam assistant. How can I help you today?", 'bot');
+    addMessage("You can ask me about exam duration, marking scheme, or language options.", 'bot');
+}
+
+function addMessage(text, sender, isViolation = false) {
+  const messagesDiv = document.getElementById('chatMessages');
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `message ${sender}-message${isViolation ? ' violation' : ''}`;
+  messageDiv.textContent = text;
+  messagesDiv.appendChild(messageDiv);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function sendMessage() {
+    const input = document.getElementById('chating');
+    const message = input.value.trim();
+    
+    if (message) {
+        addMessage(message, 'user');
+        generateResponse(message);
+        input.value = '';
+    }
+}
+
+// Handle Enter key
+document.getElementById('chating').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
+
+function askQuestion(topic) {
+    addMessage(topic, 'user');
+    generateResponse(topic);
+}
+
+function generateResponse(query) {
+    setTimeout(() => {
+        const response = getResponseForQuery(query.toLowerCase());
+        addMessage(response, 'bot');
+    }, 500);
+}
+
+function getResponseForQuery(query) {
+  if (query.includes('time') || query.includes('duration')) {
+    return `Your remaining time is ${formatTime(timeLeft)} minutes. The timer is displayed at the top of your screen.`;
+  }
+    if (query.includes('mark') || query.includes('marks')) {
+        return 'Each question carries 2 marks. There is negative marking in this exam. Total marks of exam is 100.';
+    }
+    if (query.includes('language')) {
+        return 'You can switch between English, Bengali, and Hindi using the language dropdown at the top.';
+    }
+    if (query.includes('review')) {
+        return 'Use the "Mark for Review" button below the question. Reviewed questions appear in red in the question palette.';
+    }
+    if (query.includes('next') || query.includes('previous')) {
+        return 'Use the Next and Previous buttons below the question, or click question numbers in the palette on the right.';
+    }
+    if (query.includes('submit')) {
+        return 'Click the "Submit Exam" button at the bottom right when you\'re ready to submit. Make sure to review all questions first.';
+    }
+    return "I can help you with questions about time remaining, marking scheme, language options, or navigation. What would you like to know?";
+}
+
+
+
 // Violation tracking state
 const violationSystem = {
   violations: [],
@@ -949,9 +949,6 @@ function handleViolation(type, message) {
   violationSystem.violations.push(violation);
   violationSystem.warningCount++;
 
-  // Send warning to chatbot
-  addMessage(message, 'bot');
-  
   // Add violation message to chat with red color
   const messagesDiv = document.getElementById('chatMessages');
   const violationDiv = document.createElement('div');
@@ -998,25 +995,12 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Modify existing chat functions to handle violations
-const originalGenerateResponse = generateResponse;
+// Ensure chatbot responses are not affected by violations
 function generateResponse(query) {
-  // Check if it's a violation message
-  if (query.startsWith('Warning:')) {
-      addMessage(query, 'bot', true);
-  } else {
-      originalGenerateResponse(query);
-  }
-}
-
-// Update addMessage function to handle violations
-function addMessage(text, sender, isViolation = false) {
-  const messagesDiv = document.getElementById('chatMessages');
-  const messageDiv = document.createElement('div');
-  messageDiv.className = `message ${sender}-message${isViolation ? ' violation' : ''}`;
-  messageDiv.textContent = text;
-  messagesDiv.appendChild(messageDiv);
-  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    setTimeout(() => {
+        const response = getResponseForQuery(query.toLowerCase());
+        addMessage(response, 'bot');
+    }, 500);
 }
 
 // Initialize violation detection when the page loads
