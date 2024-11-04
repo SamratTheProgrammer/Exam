@@ -1355,4 +1355,8 @@ tbody td {
         width: 90%;
         margin-top: 1rem;
     }
+    .fade-overlay {
+        height: 170px;
+        top: 140px;
+    }
 }
