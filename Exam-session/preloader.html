@@ -64,6 +64,7 @@
     </style>
 </head>
 <body>
+
     <div class="preloader">
         <svg class="logo" viewBox="0 0 100 100">
             <path d="M20 30 H80 V40 H20 Z" fill="#62CFE6"/>
@@ -81,5 +82,13 @@
             window.location.href = "index.html";
         }, 3000);
     </script>
+    <script>
+        // Prevent back button
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
+    <script src="exam-security.js"></script>
 </body>
 </html>

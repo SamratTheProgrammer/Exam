@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
+    <script>
+        // Prevent back button
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
     <header class="header">
             <nav class="navbar">
                 <div class="logo">
@@ -117,16 +124,6 @@
                     <span>Not Attempted</span>
                 </div>
             </div>
-            <!-- <div class="chatbox">
-                <div class="chathead">
-                    <i class='bx bx-left-arrow-alt'></i>
-                    <h5>Llama 3.1 AI</h5>
-                </div>
-                <div class="chat-body">
-                <input type="text" placeholder="Ask your questions!" class="chattype" id="chating">
-                <button type="submit" id="chatsend"><i class='bx bx-up-arrow-alt'></i></button>
-            </div>
-        </div> -->
         <div class="chatbox">
             <div class="chathead">
                 <i class='bx bx-left-arrow-alt' onclick="toggleChat()"></i>

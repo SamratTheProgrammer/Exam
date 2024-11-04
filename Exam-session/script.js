@@ -706,106 +706,6 @@ let isOpen = true;
     }
 
 
-
-
-    // Function to handle fullscreen
-function enableExamMode() {
-  const elem = document.documentElement;
-  
-  // Request fullscreen using various browser prefixes
-  if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) {
-      elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) {
-      elem.msRequestFullscreen();
-  }
-
-  // Disable context menu (right click)
-  document.addEventListener('contextmenu', (e) => {
-      e.preventDefault();
-      return false;
-  });
-
-  // Handle keyboard events
-  document.addEventListener('keydown', (e) => {
-      // Get the currently focused element
-      const focusedElement = document.activeElement;
-      
-      // Check if the focused element is the exam assistant input
-      const isExamAssistantInput = focusedElement?.getAttribute('id') === 'chating' || 
-                                 focusedElement?.closest('.chatbox');
-
-      // If not typing in exam assistant, prevent all keyboard input
-      if (!isExamAssistantInput) {
-          e.preventDefault();
-          return false;
-      }
-      
-      // When in exam assistant, still block dangerous combinations
-      if (isExamAssistantInput) {
-          // Block browser shortcuts
-          if (e.ctrlKey || e.altKey || e.metaKey) {
-              e.preventDefault();
-              return false;
-          }
-          
-          // Block function keys
-          if (e.key.startsWith('F') && !isNaN(e.key.slice(1))) {
-              e.preventDefault();
-              return false;
-          }
-      }
-  });
-
-  // Prevent exiting fullscreen
-  document.addEventListener('fullscreenchange', handleFullscreenChange);
-  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-  document.addEventListener('mozfullscreenchange', handleFullscreenChange);
-  document.addEventListener('MSFullscreenChange', handleFullscreenChange);
-}
-
-// Handle fullscreen change attempts
-function handleFullscreenChange() {
-  if (!document.fullscreenElement && 
-      !document.webkitFullscreenElement && 
-      !document.mozFullScreenElement && 
-      !document.msFullscreenElement) {
-      enableExamMode(); // Re-enable fullscreen if user tries to exit
-  }
-}
-
-// Function to disable exam mode after submission
-function disableExamMode() {
-  // Remove all event listeners
-  document.removeEventListener('contextmenu', (e) => e.preventDefault());
-  document.removeEventListener('keydown', (e) => e.preventDefault());
-  document.removeEventListener('fullscreenchange', handleFullscreenChange);
-  document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
-  document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
-  document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
-
-  // Exit fullscreen
-  if (document.exitFullscreen) {
-      document.exitFullscreen();
-  } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-  }
-}
-
-// Initialize exam mode when page loads
-document.addEventListener('DOMContentLoaded', () => {
-  enableExamMode();
-
-  // Add event listener to the submit button
-  const submitButton = document.querySelector('#pop_up'); // Adjust selector as needed
-  if (submitButton) {
-      submitButton.addEventListener('click', disableExamMode);
-  }
-});
-
 // Question tracking state
 const examState = {
   totalQuestions: 25,
@@ -950,3 +850,174 @@ document.addEventListener('change', (e) => {
 document.querySelector('.mark-btn').addEventListener('click', () => {
   updateInfoTooltip();
 });
+
+
+// Violation tracking state
+const violationSystem = {
+  violations: [],
+  warningCount: 0,
+  maxWarnings: 10,
+  isFullscreen: false
+};
+
+// Initialize violation detection
+function initializeViolationDetection() {
+  // Detect tab visibility changes
+  document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+          handleViolation('Tab Change', 'Warning: Changing tabs is not allowed during the exam.');
+      }
+  });
+
+  // Detect browser back/forward buttons
+  window.addEventListener('popstate', (e) => {
+      e.preventDefault();
+      handleViolation('Navigation', 'Warning: Using browser navigation buttons is not allowed.');
+      window.history.pushState(null, null, window.location.href);
+  });
+
+  // Prevent right-click context menu
+  document.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      handleViolation('Right Click', 'Warning: Right-clicking is disabled during the exam.');
+  });
+
+  // Detect copy/paste attempts
+  document.addEventListener('copy', (e) => {
+      e.preventDefault();
+      handleViolation('Copy Attempt', 'Warning: Copying exam content is not allowed.');
+  });
+  
+  document.addEventListener('paste', (e) => {
+      e.preventDefault();
+      handleViolation('Paste Attempt', 'Warning: Pasting content is not allowed during the exam.');
+  });
+
+  // Detect keyboard shortcuts
+  document.addEventListener('keydown', (e) => {
+      // Detect Ctrl/Cmd + key combinations
+      if (e.ctrlKey || e.metaKey) {
+          const blockedKeys = ['c', 'v', 'p', 'r', 'a'];
+          if (blockedKeys.includes(e.key.toLowerCase())) {
+              e.preventDefault();
+              handleViolation('Keyboard Shortcut', 'Warning: Keyboard shortcuts are disabled during the exam.');
+          }
+      }
+      
+      // Detect Alt+Tab attempt
+      if (e.altKey && e.key === 'Tab') {
+          e.preventDefault();
+          handleViolation('Alt+Tab', 'Warning: Switching applications is not allowed during the exam.');
+      }
+  });
+
+  // Track mouse leaving the window
+  document.addEventListener('mouseleave', () => {
+      handleViolation('Mouse Leave', 'Warning: Please keep your mouse within the exam window.');
+  });
+
+  // Detect fullscreen changes
+  document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) {
+          handleViolation('Fullscreen Exit', 'Warning: Exiting fullscreen mode is not allowed.');
+          requestFullscreen();
+      }
+  });
+
+  // Initialize fullscreen mode
+  requestFullscreen();
+
+  // Prevent browser refresh
+  window.addEventListener('beforeunload', (e) => {
+      e.preventDefault();
+      e.returnValue = '';
+      handleViolation('Refresh Attempt', 'Warning: Refreshing the page is not allowed during the exam.');
+  });
+
+  // Initialize history state to prevent back button
+  window.history.pushState(null, null, window.location.href);
+}
+
+// Handle violations
+function handleViolation(type, message) {
+  const violation = {
+      type: type,
+      timestamp: new Date().toLocaleTimeString(),
+      message: message
+  };
+  
+  violationSystem.violations.push(violation);
+  violationSystem.warningCount++;
+
+  // Send warning to chatbot
+  addMessage(message, 'bot');
+  
+  // Add violation message to chat with red color
+  const messagesDiv = document.getElementById('chatMessages');
+  const violationDiv = document.createElement('div');
+  violationDiv.className = 'message bot-message violation';
+  violationDiv.style.color = 'red';
+  violationDiv.textContent = `${violation.timestamp}: ${violation.message}`;
+  messagesDiv.appendChild(violationDiv);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+  // Check if max warnings exceeded
+  if (violationSystem.warningCount >= violationSystem.maxWarnings) {
+      handleMaxViolations();
+  }
+}
+
+// Handle maximum violations reached
+function handleMaxViolations() {
+  alert('Maximum violations reached. Your exam will be submitted automatically.');
+  // Submit exam
+  window.location.href = 'start.html';
+}
+
+// Request fullscreen mode
+function requestFullscreen() {
+  const elem = document.documentElement;
+  if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+  }
+  violationSystem.isFullscreen = true;
+}
+
+// Add CSS for violation messages
+const style = document.createElement('style');
+style.textContent = `
+  .violation {
+      background-color: #ffe6e6;
+      border-left: 4px solid #ff0000;
+      font-weight: bold;
+  }
+`;
+document.head.appendChild(style);
+
+// Modify existing chat functions to handle violations
+const originalGenerateResponse = generateResponse;
+function generateResponse(query) {
+  // Check if it's a violation message
+  if (query.startsWith('Warning:')) {
+      addMessage(query, 'bot', true);
+  } else {
+      originalGenerateResponse(query);
+  }
+}
+
+// Update addMessage function to handle violations
+function addMessage(text, sender, isViolation = false) {
+  const messagesDiv = document.getElementById('chatMessages');
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `message ${sender}-message${isViolation ? ' violation' : ''}`;
+  messageDiv.textContent = text;
+  messagesDiv.appendChild(messageDiv);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+// Initialize violation detection when the page loads
+document.addEventListener('DOMContentLoaded', initializeViolationDetection);

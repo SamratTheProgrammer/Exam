@@ -174,6 +174,13 @@ body{
 </style>
 </head>
 <body>
+    <script>
+        // Prevent back button
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
 <div class="page-container">
 <div class="guidelines-container">
     <h1>Exam Guidelines</h1>
@@ -212,8 +219,8 @@ body{
     <div class="start-exam-container">
         <div class="timer">Time until exam starts: <span id="countdown">10:00</span></div>
         <div class="checkbox-container">
-            <input type="checkbox" id="agreeCheck" class="agree-checkbox">
-            <label for="agreeCheck">I have read and understood all the instructions</label>
+            <input type="checkbox" id="accept-instructions" class="agree-checkbox">
+            <label for="accept-instructions">I have read and understood all the instructions</label>
         </div>
         <button class="start-btn" id="startBtn" disabled>Start Exam</button>
         <div class="timer-warning" id="timerWarning">
@@ -242,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Exam start functionality
     const startBtn = document.getElementById('startBtn');
-    const agreeCheck = document.getElementById('agreeCheck');
+    const agreeCheck = document.getElementById('accept-instructions');
     const countdownEl = document.getElementById('countdown');
     const timerWarning = document.getElementById('timerWarning');
     
@@ -291,6 +298,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateTimer();
 });
 </script>
-<script src="start.js"></script>
+<!-- <script src="start.js"></script> -->
+<script src="exam-security.js"></script>
 </body>
 </html>

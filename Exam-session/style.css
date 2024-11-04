@@ -207,6 +207,7 @@ body{
     margin-top: 2rem;
     background-color: var(--primary-color);
     color: var(--text-color);
+    cursor: pointer;
 }
 .info{
     display: flex;
