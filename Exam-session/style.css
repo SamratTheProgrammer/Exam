@@ -740,9 +740,9 @@ font-size: 1.2rem;
     position: relative;
 }
 
-@media(max-width:1600px){
+@media(max-width:1570px){
     .exam-info h2{
-        font-size: 1.7rem;
+        font-size: 1.5rem;
     }
     .submit-exam{
         margin-left: 7rem;
