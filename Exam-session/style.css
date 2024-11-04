@@ -739,3 +739,19 @@ font-size: 1.2rem;
     font-size: 0.9rem;
     position: relative;
 }
+
+@media(max-width:1600px){
+    .exam-info h2{
+        font-size: 1.7rem;
+    }
+    .submit-exam{
+        margin-left: 7rem;
+    }
+    .navigation-buttons{
+        margin-top: -2rem;
+    }
+    .chatbox{
+        width: 22rem;
+        margin-bottom: -0.1rem;
+    }
+}
