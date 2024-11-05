@@ -856,7 +856,7 @@ function getResponseForQuery(query) {
 const violationSystem = {
   violations: [],
   warningCount: 0,
-  maxWarnings: 10,
+  maxWarnings: 100,
   isFullscreen: false
 };
 
@@ -1005,3 +1005,163 @@ function generateResponse(query) {
 
 // Initialize violation detection when the page loads
 document.addEventListener('DOMContentLoaded', initializeViolationDetection);
+
+// prevent-selection Drag.js
+
+const preventSelection = {
+  isEnabled: true,
+
+  // Initialize all prevention methods
+  init() {
+      this.preventTextSelection();
+      this.preventDragAndDrop();
+      this.preventImageDragging();
+      this.preventCopyPaste();
+      this.addNoSelectStyles();
+  },
+
+  // Prevent text selection
+  preventTextSelection() {
+      // Prevent mouse selection
+      document.addEventListener('selectstart', (e) => {
+          if (this.isEnabled) {
+              e.preventDefault();
+              this.handleViolation('Text Selection', 'Text selection is not allowed during the exam.');
+          }
+      });
+
+      // Prevent touch selection
+      document.addEventListener('touchstart', (e) => {
+          if (this.isEnabled && e.touches.length > 1) {
+              e.preventDefault();
+              this.handleViolation('Touch Selection', 'Multi-touch gestures are not allowed during the exam.');
+          }
+      });
+
+      // Prevent selection keyboard shortcuts
+      document.addEventListener('keydown', (e) => {
+          if (this.isEnabled) {
+              // Ctrl/Cmd + A (Select All)
+              if ((e.ctrlKey || e.metaKey) && e.key === 'a') {
+                  e.preventDefault();
+                  this.handleViolation('Keyboard Selection', 'Select all shortcut is not allowed during the exam.');
+              }
+          }
+      });
+  },
+
+  // Prevent drag and drop operations
+  preventDragAndDrop() {
+      const events = ['dragstart', 'drag', 'dragenter', 'dragover', 'dragleave', 'drop'];
+      
+      events.forEach(eventType => {
+          document.addEventListener(eventType, (e) => {
+              if (this.isEnabled) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (eventType === 'dragstart') {
+                      this.handleViolation('Drag Attempt', 'Dragging content is not allowed during the exam.');
+                  }
+              }
+          }, { capture: true });
+      });
+  },
+
+  // Prevent image dragging specifically
+  preventImageDragging() {
+      document.querySelectorAll('img').forEach(img => {
+          img.setAttribute('draggable', 'false');
+          img.style.userSelect = 'none';
+          img.style.webkitUserSelect = 'none';
+      });
+
+      // Handle dynamically added images
+      const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+              mutation.addedNodes.forEach((node) => {
+                  if (node.nodeName === 'IMG') {
+                      node.setAttribute('draggable', 'false');
+                      node.style.userSelect = 'none';
+                      node.style.webkitUserSelect = 'none';
+                  }
+              });
+          });
+      });
+
+      observer.observe(document.body, {
+          childList: true,
+          subtree: true
+      });
+  },
+
+  // Prevent copy/paste operations
+  preventCopyPaste() {
+      const events = ['copy', 'paste', 'cut'];
+      
+      events.forEach(eventType => {
+          document.addEventListener(eventType, (e) => {
+              if (this.isEnabled) {
+                  e.preventDefault();
+                  this.handleViolation('Copy/Paste', `${eventType.charAt(0).toUpperCase() + eventType.slice(1)} operation is not allowed during the exam.`);
+              }
+          });
+      });
+  },
+
+  // Add CSS styles to prevent selection
+  addNoSelectStyles() {
+      const style = document.createElement('style');
+      style.textContent = `
+          body {
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+              -webkit-touch-callout: none;
+          }
+          
+          /* Allow selection only in permitted input areas */
+          input[type="text"],
+          input[type="number"],
+          textarea,
+          [contenteditable="true"] {
+              -webkit-user-select: text;
+              -moz-user-select: text;
+              -ms-user-select: text;
+              user-select: text;
+          }
+      `;
+      document.head.appendChild(style);
+  },
+
+  // Handle violations (integrate with your existing violation system)
+  handleViolation(type, message) {
+      // If you have an existing violation system, call it here
+      if (typeof window.handleViolation === 'function') {
+          window.handleViolation(type, message);
+      } else {
+          console.warn(`${type}: ${message}`);
+      }
+  },
+
+  // Enable prevention methods
+  enable() {
+      this.isEnabled = true;
+      this.addNoSelectStyles();
+  },
+
+  // Disable prevention methods (if needed for certain areas)
+  disable() {
+      this.isEnabled = false;
+  }
+};
+
+// Initialize when the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  preventSelection.init();
+});
+
+// Export for module usage if needed
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = preventSelection;
+}

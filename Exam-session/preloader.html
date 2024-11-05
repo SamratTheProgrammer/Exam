@@ -82,13 +82,5 @@
             window.location.href = "index.html";
         }, 3000);
     </script>
-    <script>
-        // Prevent back button
-        history.pushState(null, null, location.href);
-        window.onpopstate = function () {
-            history.go(1);
-        };
-    </script>
-    <script src="exam-security.js"></script>
 </body>
 </html>
