@@ -62,7 +62,7 @@ function updateTimer() {
     } else {
         clearInterval(timerInterval);
         alert('Time is up!');
-        window.location.href = 'start.html';
+        window.location.href = 'postloading.html';
     }
 }
 
@@ -357,7 +357,7 @@ function updateTimer() {
         }
         document.getElementById('confirm').addEventListener('click', () => {
             alert('Your paper submission was successful!');
-            window.location.href = 'start.html';
+            window.location.href = 'logoutloading.html';
         });
         // Logout Warning PopUp
 const logout = document.querySelector('.bg-logout');
@@ -375,7 +375,7 @@ cancleBtn.onclick = function() {
 }
 document.getElementById('logout').addEventListener('click', () => {
     alert('Your logout was successful!');
-    window.location.href = 'start.html';
+    window.location.href = 'postloading.html';
 });
         // Language change
         // function updateQuestionLanguage() {
@@ -722,7 +722,7 @@ function updateTimer() {
           resetExam();
       } else {
           alert('All attempts completed! Redirecting to start page.');
-          window.location.href = 'start.html';
+          window.location.href = 'postloading.html';
       }
   }
 }
@@ -756,7 +756,7 @@ document.getElementById('confirm').addEventListener('click', () => {
       resetExam();
   } else {
       alert('Final attempt completed! Redirecting to start page.');
-      window.location.href = 'start.html';
+      window.location.href = 'postloading.html';
   }
 });
 
@@ -968,7 +968,7 @@ function handleViolation(type, message) {
 function handleMaxViolations() {
   alert('Maximum violations reached. Your exam will be submitted automatically.');
   // Submit exam
-  window.location.href = 'start.html';
+  window.location.href = 'postloading.html';
 }
 
 // Request fullscreen mode
