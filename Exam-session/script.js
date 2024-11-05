@@ -856,7 +856,7 @@ function getResponseForQuery(query) {
 const violationSystem = {
   violations: [],
   warningCount: 0,
-  maxWarnings: 100,
+  maxWarnings: 15,
   isFullscreen: false
 };
 
