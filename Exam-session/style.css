@@ -355,7 +355,8 @@ body{
 .navigation-buttons {
     display: flex;
     justify-content: space-between;
-/*     margin-top: 3rem; */
+    position: relative;
+    bottom: -5%;
 }
 .nav-btn {
     padding: 10px 20px;
@@ -364,7 +365,6 @@ body{
     cursor: pointer;
     min-width: 7rem;
     font-size: 0.9rem;
-    margin-top: 2rem;
 }
 .prev-btn { background: #096bff; color: white; font-weight: 500; margin-left: 3rem;transition: 0.4s ease;}
 .mark-btn { background: #e40f00; color: white; font-weight: 500;transition: 0.4s ease;}
@@ -760,9 +760,6 @@ font-size: 1.2rem;
     }
     .submit-exam{
         margin-left: 6.5rem;
-    }
-    .navigation-buttons{
-        margin-top: -3rem;
     }
     .chatbox{
         width: 22rem;
