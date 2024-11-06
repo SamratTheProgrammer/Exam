@@ -355,8 +355,7 @@ body{
 .navigation-buttons {
     display: flex;
     justify-content: space-between;
-    position: relative;
-    top: 7%;
+    margin-top: 3rem;
 }
 .nav-btn {
     padding: 10px 20px;
@@ -763,14 +762,15 @@ font-size: 1.2rem;
         margin-left: 6.5rem;
     }
     .navigation-buttons{
-        margin-top: -2rem;
+        margin-top: 2.5rem;
     }
     .chatbox{
         width: 22rem;
         margin-bottom: -0.1rem;
     }
     .student-details{
-        font-size: 1.3rem;
+        line-height: 2.3rem;
+        font-size: 1.25rem;
     }
     .legend{
         margin-top: 3rem;

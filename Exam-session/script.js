@@ -575,49 +575,49 @@ const questionstranslate = [
     // ... more questionstranslate
 ];
 
-async function updateQuestionLanguage() {
-    const languageSelect = document.querySelector('.language-select');
-    const questionContainers = document.querySelectorAll('.question-container');
-    const targetLanguage = languageSelect.value;
-
-    try {
-        // Process all questionstranslate in parallel
-        const translationPromises = Array.from(questionContainers).map(async (container, index) => {
-            const questionText = container.querySelector('#question-text');
-            const optionElements = container.querySelectorAll('.options .ans input[type="radio"] + label');
-
-            // Translate question text
-            const translatedQuestionText = await translateText(questionstranslate[index].text, targetLanguage);
-            questionText.textContent = translatedQuestionText;
-
-            // Translate all options for this question in parallel
-            const optionPromises = Array.from(optionElements).map(async (element, optionIndex) => {
-                const translatedOption = await translateText(questionstranslate[index].options[optionIndex], targetLanguage);
-                element.textContent = translatedOption;
-            });
-
-            await Promise.all(optionPromises);
-        });
-
-        // Wait for all questionstranslate to be translated
-        await Promise.all(translationPromises);
-        
-    } catch (error) {
-        console.error('Translation error:', error);
-    }
+async function translateText(text, target) {
+  try {
+    const response = await fetch(
+      `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${target}&dt=t&q=${encodeURIComponent(text)}`
+    );
+    const data = await response.json();
+    return data[0][0][0];
+  } catch (error) {
+    console.error('Error translating text:', error);
+    return text; // Return original text if translation fails
+  }
 }
 
-async function translateText(text, target) {
-    try {
-        const response = await fetch(
-            `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${target}&dt=t&q=${encodeURIComponent(text)}`
-        );
-        const data = await response.json();
-        return data[0][0][0];
-    } catch (error) {
-        console.error('Error translating text:', error);
-        return text; // Return original text if translation fails
-    }
+// Function to update the question and options
+async function updateQuestionLanguage() {
+  const languageSelect = document.querySelector('.language-select');
+  const questionContainers = document.querySelectorAll('.question-container');
+  const targetLanguage = languageSelect.value;
+
+  try {
+    // Process all questionstranslate in parallel
+    const translationPromises = Array.from(questionContainers).map(async (container, index) => {
+      const questionText = container.querySelector('#question-text');
+      const optionElements = container.querySelectorAll('.options .ans input[type="radio"] + label');
+
+      // Translate question text
+      const translatedQuestionText = await translateText(questionstranslate[index].text, targetLanguage);
+      questionText.textContent = translatedQuestionText;
+
+      // Translate all options for this question in parallel
+      const optionPromises = Array.from(optionElements).map(async (element, optionIndex) => {
+        const translatedOption = await translateText(questionstranslate[index].options[optionIndex], targetLanguage);
+        element.textContent = translatedOption;
+      });
+
+      await Promise.all(optionPromises);
+    });
+
+    // Wait for all questionstranslate to be translated
+    await Promise.all(translationPromises);
+  } catch (error) {
+    console.error('Translation error:', error);
+  }
 }
 
 // Add event listener
@@ -856,7 +856,7 @@ function getResponseForQuery(query) {
 const violationSystem = {
   violations: [],
   warningCount: 0,
-  maxWarnings: 15,
+  maxWarnings: 100,
   isFullscreen: false
 };
 
