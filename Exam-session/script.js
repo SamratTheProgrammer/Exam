@@ -357,7 +357,7 @@ function updateTimer() {
         }
         document.getElementById('confirm').addEventListener('click', () => {
             alert('Your paper submission was successful!');
-            window.location.href = 'logoutloading.html';
+            window.location.href = 'postloading.html';
         });
         // Logout Warning PopUp
 const logout = document.querySelector('.bg-logout');
@@ -375,7 +375,7 @@ cancleBtn.onclick = function() {
 }
 document.getElementById('logout').addEventListener('click', () => {
     alert('Your logout was successful!');
-    window.location.href = 'postloading.html';
+    window.location.href = 'logoutloading.html';
 });
         // Language change
         // function updateQuestionLanguage() {

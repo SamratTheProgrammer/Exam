@@ -127,19 +127,6 @@ section{
     letter-spacing: 0.1rem;
     background-color: var(--main-color);
     transition: 0.4s ease;
-    /* Remove from here when use button */
-    display: flex;                  
-    justify-content: center;
-    align-items: center;
-}
-.form-container a{
-    color: white;
-
-}
-/* Remove ends here */
-#login-btn:hover{
-    background-color: #5427e9;
-    transition: 0.4s ease;
 }
 .img-container{
     width: 22rem;

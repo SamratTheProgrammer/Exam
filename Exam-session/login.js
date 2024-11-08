@@ -44,3 +44,22 @@ function showInfo() {
 function hideInfo() {
     document.querySelector('.info-tooltip').style.display = 'none';
 }
+
+const loginButton = document.getElementById('login-btn');
+
+loginButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    
+    // Example: Check if some condition is met
+    if (validateLogin()) {
+        window.location.href = "start.html";
+    } else {
+        alert("Login failed!");
+    }
+});
+
+function validateLogin() {
+    // Add your login validation logic here
+    // Return true if login is successful, false otherwise
+    return true;
+}

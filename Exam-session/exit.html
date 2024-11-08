@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="logo-removebg-preview1.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank you for give the examination</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            border: none;
+            font-family: "Poppins", sans-serif;
+        }
+        :root{
+            --bg-color:#fff;
+            --body-color: #e4e9f7;
+            --shadow-color: rgba(0, 0, 0, .2);
+            --text-color: #707070;
+        }
+        :root.dark{
+    --bg-color: #242526;
+    --body-color: #18131a;
+    --text-color: #fdfdfd;
+    --shadow-color: rgba(0, 0, 0, .7);
+}
+        body{
+            background-color: var(--body-color);
+            height: 100vh;
+        }
+        section{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .logo{
+            display: flex;
+            align-items: center;
+        }
+        .logo span{
+            color: var(--text-color);
+            margin-left: 1rem;
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: 0.3rem;
+        }
+        .container{
+            background-color: var(--bg-color);
+            width: 60rem;
+            height: 40rem;
+            border-radius: 10px;
+            transition: 0.4s ease;
+            box-shadow: 0 .1rem .5rem var(--shadow-color);
+        }
+        .container:hover{
+            box-shadow: 0 .1rem 2rem var(--shadow-color);
+        }
+        .header{
+            height: 6.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            padding-left: 3rem;
+            padding-right: 3rem;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        #theme-toggle i{
+            font-size: 3rem;
+            color: var(--text-color);
+            position: absolute;
+            transition: opacity 0.3s ease;
+        }   
+        #theme-toggle{
+            margin-bottom: 1rem;
+            background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 4rem;
+    height: 4rem;
+    padding-right: 4rem;
+    color: var(--text-color);
+    align-self: center;
+    padding-bottom: 3rem;
+        }
+        #theme-toggle i:hover{
+    color: var(--text-color2);
+    transform: rotate(15deg);
+    transition: 0.3s ease;
+}
+/* Light mode (default) */
+#theme-toggle .bi-moon {
+    opacity: 1;
+}
+#theme-toggle .bi-brightness-high {
+    opacity: 0;
+}
+
+/* Dark mode */
+.dark #theme-toggle .bi-moon {
+    opacity: 0;
+    pointer-events: none;
+}
+.dark #theme-toggle .bi-brightness-high {
+    opacity: 1;
+}
+.details{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+    height: 22rem;
+}
+.std-details{
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    color: var(--text-color);
+    font-size:1.35rem;
+    height: 20rem;
+    width: 27rem;
+    background-color: var(--body-color);
+    border-radius: 10px;
+}
+.exam-details{
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    color: var(--text-color);
+    font-size:1.35rem;
+    height: 22rem;
+    width: 27rem;
+    background-color: var(--body-color);
+    border-radius: 10px;
+}
+.det{
+    line-height: 3rem;
+    padding-left: 2rem;
+}
+.details h2{
+    margin-top: 2rem;
+    text-align: center;
+}
+.ans{
+    display: flex;
+    color: var(--text-color);
+    justify-content: center;
+    font-size: 1.5rem;
+    height: 3rem;
+    width: 100%;
+    background-color: var(--body-color);
+    align-items: center;
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    height: 4rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+#continue{
+    padding: 0.5rem;
+    border-radius: 6px;
+    height: 3rem;
+    width: 6.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #695cfe;
+    color: #fff;
+    transition: 0.3s ease;
+}
+#continue:hover{
+    background-color: #4c4cfe;
+    transition: 0.3s ease;
+}
+.thankyou{
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    width: 26rem;
+    height: 17rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    transition: 0.4s ease;
+    box-shadow: 0 .1rem .5rem var(--shadow-color);
+    }
+    .thankyou.show {
+            top: 55%;
+            transform: translateY(-50%);
+            opacity: 1;
+            visibility: visible;
+        }
+    .thankyou:hover{
+            transform: scale(1.02);
+            box-shadow: 0 .1rem 2rem var(--shadow-color);
+    }
+    .thankyou h2{
+        padding-top: 1rem;
+        font-size: 2rem;
+        letter-spacing: 0.1rem;
+    }
+    .thankyou p{
+        font-size: 1.2rem;
+        padding-top: 0.6rem;
+    }
+    #ok{
+        width: 80%;
+        height: 3rem;
+        border-radius: 6px;
+        font-size: 1.3rem;
+        font-weight: 500;
+        background-color: #695cfe;
+        color: #fff;
+        transition: 0.3s ease;
+        cursor: pointer;
+    }
+    #ok:hover{
+    background-color: #4c4cfe;
+    transition: 0.3s ease;
+}
+.image{
+    width: 5.5rem;
+    position: absolute;
+    top: -3rem;
+}
+    </style>
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+    <section>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+        <img src="logo-removebg-preview1.png" alt="">
+        <span>ExamNex</span></div>
+        <button id="theme-toggle">
+            <i class="bi bi-moon"></i>
+            <i class="bi bi-brightness-high"></i>
+        </button>
+    </div>
+    <div class="details">
+        <div class="std-details">
+        <h2>Student Details</h2>
+        <div class="det">
+        <h3>Name :Sagnik Ghosh</h3>
+        <h3>Roll No :30901222105</h3>
+        <h3>Email :ghoshbabu@chabla</h3>
+        <h3>Reg No :16548915</h3>
+    </div>
+    </div>
+    <div class="exam-details">
+        <h2>Exam Details</h2>
+        <div class="det">
+        <h3>Exam name :Mathametics</h3>
+        <h3>Exam id :3090M</h3>
+        <h3>Total Questions :32</h3>
+        <h3>Time :12:00 - 12:30</h3>
+        <h3>Date :08.11.2024</h3>
+    </div>
+    </div>
+</div>
+<div class="ans">
+    <h3 id="attempts">Total answered 30 out of 32 Questions</h3>
+</div>
+    <div class="btn">
+        <button type="submit" id="continue">Continue</button>
+    </div>
+    </div>
+    <div class="thankyou" id="popup">
+        <img src="checked.png" alt="" class="image">
+        <div class="inner-container">
+        <div class="content">
+            <h2>Thank you!</h2>
+            <p>Your answers have been submitted successfully. Thanks!</p>
+        </div>
+        <div class="btn">
+            <button id="ok" onclick="closePopup()">Ok</button>
+        </div>
+    </div>
+    </div>
+</section>
+<script>
+    const storedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    function updateTheme(isDark) {
+        if (isDark) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    // Initial theme setup
+    if (storedTheme) {
+        updateTheme(storedTheme === 'dark');
+    } else {
+        updateTheme(systemPrefersDark);
+    }
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            updateTheme(e.matches);
+        }
+    });
+
+    // Toggle theme function
+    function toggleTheme() {
+        const isDark = document.documentElement.classList.contains('dark');
+        updateTheme(!isDark);
+    }
+
+    // Theme toggle button implementation
+    const toggleButton = document.getElementById('theme-toggle');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', toggleTheme);
+    }
+
+    // Get the button element
+const loginButton = document.getElementById('continue');
+
+// Add click event listener to the button
+loginButton.addEventListener('click', function(event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+    
+    // Redirect to another page
+    window.location.href = "login.html";
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+            // Show the popup after a brief delay
+            setTimeout(function() {
+                document.getElementById('popup').classList.add('show');
+            }, 500);
+
+            ScrollReveal({ 
+                //reset: true ,
+                distance:'500px',
+                duration:2000,
+                delay: 200
+            });
+
+            ScrollReveal().reveal('.thankyou', { 
+                origin: 'top',
+                distance: '100px',
+                afterReveal: function(el) {
+                    el.style.transform = 'translate(-50%, -50%)';
+                }
+            });
+        });
+
+        function closePopup() {
+            document.getElementById('popup').classList.remove('show');
+        }
+</script>
+<script src="https://unpkg.com/scrollreveal"></script>
+</body>
+</html>

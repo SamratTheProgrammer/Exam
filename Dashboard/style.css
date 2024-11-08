@@ -265,13 +265,19 @@ span{
     margin: 2rem 0 3rem;
 }
 .contact{
-    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 .contact h2{
     margin-bottom: 3rem;
+    font-size: 6rem;
 }
 .contact form{
-    max-width: 70rem;
+    width: 100rem;
+    height: 60rem;
     margin: 1rem auto;
     text-align: center;
     margin-bottom: 3rem;
@@ -279,19 +285,22 @@ span{
 .contact form .input-box{
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
 }
 .contact form .input-box input,
 .contact form textarea{
     width: 100%;
-    padding: 1.5rem;
-    font-size: 1.6rem;
+    padding: 2rem;
+    font-size: 2rem;
     color: var(--text-color);
     background: var(--bg-color);
     border-radius: .8rem;
     margin: .7rem 0;
     box-shadow: 0 .1rem .5rem var(--shadow-color);
-    
+}
+.contact form textarea{
+    height: 36rem;
 }
 .contact form .input-box input{
     width: 49%;
@@ -1662,7 +1671,9 @@ button#signup:hover{
     .contact form .input-box input{
         width: 100%;
     }
-    
+    .contact form{
+        width: 100%;
+    }
     .test-layer h4{
         font-size: 5rem;
     }
@@ -1740,6 +1751,11 @@ button#signup:hover{
     .about-content span.btn{
         left: 30%;
     }
+    .contact form{
+        width: 70rem;
+        
+    }
+    
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
